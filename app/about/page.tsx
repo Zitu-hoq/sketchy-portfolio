@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 
+
+
 export default function AboutPage() {
   return (
     <div className="bg-stone-50">
@@ -13,7 +15,7 @@ export default function AboutPage() {
             <div>
               <div className="mb-12">
                 <div className="flex justify-start -ml-12">
-                  <Image src="/code.svg" alt="code" width={64} height={64} />
+                  <img src="/code.svg" alt="code" width={64} height={64} />
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">
                   A Little About Me

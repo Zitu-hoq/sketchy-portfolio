@@ -4,7 +4,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true,
+    loader: "custom",
+    loaderFile: "./public/images/loader.js",
   },
 }
 

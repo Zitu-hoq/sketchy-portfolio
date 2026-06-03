@@ -1,8 +1,17 @@
 "use client";
 
 import Tape from "@/components/Tape";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { WiredButton, WiredLink } from "wired-elements-react";
+
+const WiredButton = dynamic(
+  () => import("wired-elements-react").then((m) => m.WiredButton),
+  { ssr: false },
+);
+const WiredLink = dynamic(
+  () => import("wired-elements-react").then((m) => m.WiredLink),
+  { ssr: false },
+);
 
 export default function Home() {
   const portfolioItems = [
@@ -74,10 +83,10 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Portfolio */}
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
-              <div className="w-full max-w-xs h-64 bg-gray-200 rounded-lg flex items-center justify-center border-2 border-navy/20">
+              <div className="w-full max-w-xs h-64 bg-transparent rounded-lg flex items-center justify-center">
                 <img
-                  src="/portfolio.svg"
-                  alt="Portfolio"
+                  src="/files.svg"
+                  alt="Profile"
                   className="h-full w-full object-contain rounded-lg"
                 />
               </div>
@@ -105,9 +114,9 @@ export default function Home() {
 
             {/* Chat CTA */}
             <div className="flex flex-col items-center justify-center space-y-6 text-center">
-              <div className="w-full max-w-xs h-64 bg-gray-200 rounded-lg flex items-center justify-center border-2 border-navy/20">
+              <div className="w-full max-w-xs h-64 bg-transparent rounded-lg flex items-center justify-center">
                 <img
-                  src="/portfolio.svg"
+                  src="/chat.svg"
                   alt="Chat"
                   className="h-full w-full object-contain rounded-lg"
                 />
