@@ -1,14 +1,8 @@
 "use client";
 
-import { GithubIcon } from "@/components/Icons";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "@/components/ui/dialog";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 const WiredButton = dynamic(
@@ -16,6 +10,13 @@ const WiredButton = dynamic(
   { ssr: false },
 );
 
+const WiredImage = dynamic(
+  () => import("wired-elements-react").then((m) => m.WiredImage),
+  { ssr: false },
+);
+
+const TRANSPARENT_PIXEL =
+  "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
 
 function truncateWords(text: string | undefined, max: number): string {
   if (!text) return "";
@@ -26,7 +27,6 @@ function truncateWords(text: string | undefined, max: number): string {
 
 export default function WorkContent({ projects }: { projects: any[] }) {
   const [filter, setFilter] = useState("All");
-  const [selectedProject, setSelectedProject] = useState<any | null>(null);
 
   const categories = ["All", ...new Set(projects.map((p) => p.type))];
 
@@ -47,12 +47,7 @@ export default function WorkContent({ projects }: { projects: any[] }) {
   }, [filtered]);
 
   return (
-    <Dialog
-      open={!!selectedProject}
-      onOpenChange={(open) => {
-        if (!open) setSelectedProject(null);
-      }}
-    >
+    <>
       <section className="bg-stone-50 py-6 px-6 border-b border-gray-200">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap gap-4">
@@ -80,13 +75,13 @@ export default function WorkContent({ projects }: { projects: any[] }) {
               }`}
             >
               {row.items.map((project) => (
-                <div
+                <Link
                   key={project.$id}
-                  className="group cursor-pointer"
-                  onClick={() => setSelectedProject(project)}
+                  href={`/work/${encodeURIComponent(project.name)}`}
+                  className="group block"
                 >
                   <div
-                    className={`bg-gradient-to-br from-slate-400 via-teal-300 to-slate-500 rounded-lg mb-4 relative overflow-hidden ${
+                    className={`bg-transparent mb-4 relative ${
                       row.cols === 2 ? "h-80" : "h-64"
                     }`}
                   >
@@ -95,7 +90,14 @@ export default function WorkContent({ projects }: { projects: any[] }) {
                         src={project.img}
                         alt={project.name}
                         fill
-                        className="object-cover group-hover:scale-105 transition"
+                        className="object-cover scale-97 group-hover:grayscale transition"
+                      />
+                    )}
+                    {project.img && (
+                      <WiredImage
+                        src={TRANSPARENT_PIXEL}
+                        elevation={1}
+                        className="absolute inset-0 w-full h-full pointer-events-none"
                       />
                     )}
                   </div>
@@ -120,73 +122,12 @@ export default function WorkContent({ projects }: { projects: any[] }) {
                   <p className="text-md text-slate-700 leading-relaxed">
                     {truncateWords(project.summary, 20)}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           ))}
         </div>
       </section>
-
-      {selectedProject && (
-        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto bg-stone-100 border-0 p-0">
-            <div className="p-12">
-              <div className="relative w-full h-64 mb-4 rounded-lg overflow-hidden">
-                {selectedProject.img && (
-                  <Image
-                    src={selectedProject.img}
-                    alt={selectedProject.name}
-                    fill
-                    className="object-cover"
-                  />
-                )}
-              </div>
-              <DialogTitle className="text-2xl font-bold text-slate-900">
-                {selectedProject.name}
-              </DialogTitle>
-              <p className="text-teal-400 font-semibold uppercase text-sm">
-                {selectedProject.type}
-              </p>
-              {selectedProject.technologies &&
-                selectedProject.technologies.length > 0 && (
-                  <div className="flex flex-wrap gap-2">
-                    {selectedProject.technologies.map((tech: string) => (
-                      <span
-                        key={tech}
-                        className="inline-block bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              <DialogDescription className="text-slate-700 leading-relaxed text-base">
-                {selectedProject.summary}
-              </DialogDescription>
-
-              <div className="flex items-center justify-between pt-4 border-t border-gray-200 mt-4">
-                {selectedProject.githubLink && (
-                  <a
-                    href={selectedProject.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-slate-600 hover:text-slate-900 transition-colors"
-                  >
-                    <GithubIcon width={48} height={48} />
-                  </a>
-                )}
-                {selectedProject.link && (
-                  <a
-                    href={selectedProject.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <WiredButton elevation={2}>Visit Project</WiredButton>
-                  </a>
-                )}
-              </div>
-            </div>
-        </DialogContent>
-      )}
-    </Dialog>
+    </>
   );
 }

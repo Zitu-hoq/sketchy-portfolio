@@ -7,9 +7,34 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from "@/components/Icons";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { WiredButton, WiredLink } from "wired-elements-react";
+import { useCallback, useState } from "react";
+
+const WiredButton = dynamic(
+  () => import("wired-elements-react").then((m) => m.WiredButton),
+  { ssr: false },
+);
+
+const WiredIconButton = dynamic(
+  () => import("wired-elements-react").then((m) => m.WiredIconButton),
+  { ssr: false },
+);
+
+const WiredInput = dynamic(
+  () => import("wired-elements-react").then((m) => m.WiredInput),
+  { ssr: false },
+);
+
+const WiredLink = dynamic(
+  () => import("wired-elements-react").then((m) => m.WiredLink),
+  { ssr: false },
+);
+
+const WiredTextarea = dynamic(
+  () => import("wired-elements-react").then((m) => m.WiredTextarea),
+  { ssr: false },
+);
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -17,6 +42,17 @@ export default function Footer() {
   const [submitted, setSubmitted] = useState(false);
   const pathname = usePathname();
   const isWorkPage = pathname === "/work";
+  const emailRef = useCallback((el: any) => {
+    if (!el) return;
+    el.updateComplete.then(() => {
+      const root = el.shadowRoot;
+      if (root) {
+        const style = document.createElement("style");
+        style.textContent = "input { background: transparent !important; }";
+        root.appendChild(style);
+      }
+    });
+  }, []);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,7 +108,7 @@ export default function Footer() {
           <p className="text-xl text-white/70 mb-2">
             Want to chat? Drop me a message{" "}
             <WiredLink
-              elevation={3}
+              elevation={2}
               className=""
               href="mailto:zhzitu121@gmail.com"
               style={
@@ -88,7 +124,7 @@ export default function Footer() {
             Ready to resurface? Hit the button below to head back up!
           </p>
           <WiredButton
-            elevation={2}
+            elevation={1}
             className="bg-teal-200 text-slate-900"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
@@ -118,25 +154,37 @@ export default function Footer() {
               <p className="text-xl mb-6">
                 You can find my socials & github below!
               </p>
-              <div
-                className="flex gap-6 text-2xl"
-                style={{ filter: "url(#sketchy-filter)" }}
-              >
-                <a href="#" className="hover:opacity-80 transition-opacity">
+              <div className="flex gap-6 text-2xl">
+                <WiredIconButton
+                  onClick={() => window.open("#", "_blank")}
+                  style={{ color: "#000", filter: "brightness(0) invert(1)" }}
+                >
                   <GithubIcon className="w-8 h-8" />
-                </a>
-                <a href="#" className="hover:opacity-80 transition-opacity">
+                </WiredIconButton>
+                <WiredIconButton
+                  onClick={() => window.open("#", "_blank")}
+                  style={{ color: "#000", filter: "brightness(0) invert(1)" }}
+                >
                   <LinkedInIcon className="w-8 h-8" />
-                </a>
-                <a href="#" className="hover:opacity-80 transition-opacity">
+                </WiredIconButton>
+                <WiredIconButton
+                  onClick={() => window.open("#", "_blank")}
+                  style={{ color: "#000", filter: "brightness(0) invert(1)" }}
+                >
                   <TwitterIcon className="w-8 h-8" />
-                </a>
-                <a href="#" className="hover:opacity-80 transition-opacity">
+                </WiredIconButton>
+                <WiredIconButton
+                  onClick={() => window.open("#", "_blank")}
+                  style={{ color: "#000", filter: "brightness(0) invert(1)" }}
+                >
                   <FacebookIcon className="w-8 h-8" />
-                </a>
-                <a href="#" className="hover:opacity-80 transition-opacity">
+                </WiredIconButton>
+                <WiredIconButton
+                  onClick={() => window.open("#", "_blank")}
+                  style={{ color: "#000", filter: "brightness(0) invert(1)" }}
+                >
                   <InstaIcon className="w-8 h-8" />
-                </a>
+                </WiredIconButton>
               </div>
             </div>
 
@@ -156,13 +204,15 @@ export default function Footer() {
                 <label className="block text-2xl mb-3 -mt-4">
                   Email <span className="text-white/50">(required)</span>
                 </label>
-                <input
+                <WiredInput
+                  ref={emailRef}
                   type="email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setEmail((e.target as any).value)}
                   required
-                  className="w-full bg-transparent border-b-4 rounded-xs border-white/30 pb-2 text-white text-xl placeholder-white/50 focus:outline-none focus:border-green-accent transition-colors"
-                  placeholder=""
+                  placeholder="Email"
+                  className="w-full p-2"
+                  style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 />
               </div>
 
@@ -170,19 +220,20 @@ export default function Footer() {
                 <label className="block text-2xl mb-3">
                   Message <span className="text-white/50">(required)</span>
                 </label>
-                <textarea
+                <WiredTextarea
                   value={message}
-                  onChange={(e) => setMessage(e.target.value)}
+                  onChange={(e) => setMessage((e.target as any).value)}
                   required
                   placeholder="Let's chat!"
                   rows={3}
-                  className="w-full bg-transparent border-b-4 rounded-xs border-white/30 pb-2 text-white text-lg placeholder-white/50 placeholder:text-xl focus:outline-none focus:border-green-accent transition-colors resize-none"
+                  className="w-full p-1"
+                  style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 />
               </div>
 
               <div>
                 <WiredButton
-                  elevation={2}
+                  elevation={1}
                   className="bg-teal-400 text-black hover:text-white hover:bg-slate-600"
                 >
                   {submitted ? "Sent!" : "Submit"}

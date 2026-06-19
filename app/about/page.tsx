@@ -1,108 +1,150 @@
 "use client";
 
+import AnimatedText, { AnimatedNumbers } from "@/components/AnimatedText";
+import Certifications from "@/components/Certifications";
+import Education from "@/components/Education";
+import Loading from "@/components/Loading";
+import Skills from "@/components/Skills";
+import { useData } from "@/context/DataContext";
 import Image from "next/image";
 
-
-
 export default function AboutPage() {
+  const { data, loading } = useData();
+  if (loading) return <Loading />;
+
+  const pageData = data.aboutPage[0];
+  const { title, biography, proPicDark, total_project, experience } = pageData;
+
   return (
     <div className="bg-stone-50">
-      {/* Main Content */}
       <section className="bg-stone-50 py-20 px-6">
         <div className="mx-auto max-w-7xl">
+          <AnimatedText
+            text={title}
+            className="mb-16 lg:!text-7xl sm:!text-6xl xs:!text-4xl sm:mb-8"
+          />
+
           <div className="grid md:grid-cols-2 gap-16 items-start mb-24">
-            {/* Content */}
             <div>
               <div className="mb-12">
                 <div className="flex justify-start -ml-12">
                   <img src="/code.svg" alt="code" width={64} height={64} />
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-8">
-                  A Little About Me
+                  Biography
                 </h2>
                 <p className="text-lg text-gray-700 mb-6 leading-relaxed">
-                  Hi, I'm{" "}
-                  <span className="text-teal-400 text-xl">
-                    Md Ziaul Hoque Zitu
+                  Hi, I&apos;m
+                  <span className="text-primary text-xl">
+                    &nbsp;Md Ziaul Hoque Zitu
                   </span>
-                  , a web developer and cyber security analyst with a passion
-                  for creating beautiful, functional, secure and user-centered
-                  digital experiences. With a good understanding in both web and
-                  cyber security field. I am always looking for new and
-                  innovative ways to bring my clients' visions to life.
+                  ,&nbsp;
+                  <span>{biography[0]}</span>
                 </p>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  My journey in web development began in 2021, when I immersed
-                  myself in the MERN stack, building my skills through projects
-                  ranging from e-commerce platforms to diverse web applications.
-                  Developing these applications gave me a deep understanding of
-                  front-end and back-end technologies and honed my ability to
-                  build responsive, user-focused web interfaces and scalable
-                  back-end solutions.
+                  {biography[1]}
                 </p>
                 <p className="text-gray-700 mb-8 leading-relaxed">
-                  While working on these projects, I became increasingly aware
-                  of the vulnerabilities inherent in web applications,
-                  especially as I observed instances where hackers exploited
-                  weak points in security. This realization prompted me to
-                  expand my skill set into cybersecurity. Through extensive
-                  study, I developed skills in cryptography and steganography,
-                  and I applied this knowledge in projects aimed at safeguarding
-                  application data and user privacy.
+                  {biography[2]}
                 </p>
+
+                <div className="flex gap-8 mt-8">
+                  <div className="flex flex-col items-center">
+                    <span className="text-5xl font-bold text-slate-900">
+                      <AnimatedNumbers value={total_project} />+
+                    </span>
+                    <span className="text-sm font-medium text-gray-600 uppercase">
+                      projects completed
+                    </span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <span className="text-5xl font-bold text-slate-900">
+                      <AnimatedNumbers value={experience} />+
+                    </span>
+                    <span className="text-sm font-medium text-gray-600 uppercase">
+                      years of experience
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Profile Image Area */}
             <div className="flex flex-col gap-6 self-center items-center">
-              <div className="h-96 bg-gradient-to-br from-teal-200 via-teal-300 to-slate-400 rounded-lg flex items-center justify-center overflow-hidden">
-                <span className="text-white text-xl font-semibold">
-                  Portrait Image
-                </span>
+              <div className="relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8 dark:bg-dark dark:border-light">
+                <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-[2rem] bg-dark dark:bg-light" />
+                <Image
+                  src={proPicDark}
+                  alt="developer image"
+                  width={500}
+                  height={500}
+                  className="w-full h-auto rounded-2xl"
+                />
               </div>
             </div>
           </div>
+
+          {/* Hobbies Section */}
+          <h2 className="text-4xl font-bold text-center text-slate-900 mb-12">
+            What I love to do:
+          </h2>
           <div className="flex flex-row justify-between items-start gap-8 text-center mb-32">
-            <div className="flex flex-col items-center gap-4">
-              <Image
-                src="/placeholder.svg"
-                alt="hobby 1"
-                width={64}
-                height={64}
-                className="w-16 h-16"
-              />
-              <h3 className="text-4xl font-bold text-slate-900">Hobby One</h3>
+            <div className="flex flex-col items-center gap-4 w-1/3">
+              <div className="w-full aspect-square flex items-center justify-center">
+                <img
+                  src="/building-app.svg"
+                  alt="building-app"
+                  className="w-full h-full object-contain grayscale hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+              <h3 className="text-4xl font-bold text-slate-900">
+                Building Apps
+              </h3>
               <p className="text-xl text-gray-700">
-                Description for the first hobby
+                Architecting scalable and user-friendly applications
+              </p>
+              <p className="text-xl text-gray-700">
+                Turning ideas into functional, polished software
               </p>
             </div>
-            <div className="flex flex-col items-center gap-4">
-              <Image
-                src="/placeholder-logo.svg"
-                alt="hobby 2"
-                width={64}
-                height={64}
-                className="w-16 h-16"
-              />
-              <h3 className="text-4xl font-bold text-slate-900">Hobby Two</h3>
+            <div className="flex flex-col items-center gap-4 w-1/3">
+              <div className="w-full aspect-square flex items-center justify-center">
+                <img
+                  src="/coding.svg"
+                  alt="coding"
+                  className="w-3/5 h-full object-contain grayscale hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+              <h3 className="text-4xl font-bold text-slate-900">
+                Finding Vulnerabilities
+              </h3>
               <p className="text-xl text-gray-700">
-                Description for the second hobby
+                Analyzing code to uncover hidden security flaws
+              </p>
+              <p className="text-xl text-gray-700">
+                Ensuring robust and secure systems
               </p>
             </div>
-            <div className="flex flex-col items-center gap-4">
-              <Image
-                src="/placeholder.svg"
-                alt="hobby 3"
-                width={64}
-                height={64}
-                className="w-16 h-16"
-              />
-              <h3 className="text-4xl font-bold text-slate-900">Hobby Three</h3>
+            <div className="flex flex-col items-center gap-4 w-1/3">
+              <div className="w-full aspect-square flex items-center justify-center">
+                <img
+                  src="/fix-bug.svg"
+                  alt="fix-bug"
+                  className="w-full h-full object-contain grayscale hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+              <h3 className="text-4xl font-bold text-slate-900">Fixing Bugs</h3>
               <p className="text-xl text-gray-700">
-                Description for the third hobby
+                Debugging and resolving issues with precision
+              </p>
+              <p className="text-xl text-gray-700">
+                Restoring stability and improving performance
               </p>
             </div>
           </div>
+
+          <Skills />
+          <Certifications />
+          <Education />
         </div>
       </section>
     </div>

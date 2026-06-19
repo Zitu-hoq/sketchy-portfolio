@@ -14,22 +14,10 @@ const WiredLink = dynamic(
 );
 
 export default function Home() {
-  const portfolioItems = [
-    { id: 1, title: "Ocean Dreams", category: "Animation" },
-    { id: 2, title: "Urban Landscape", category: "Illustration" },
-    { id: 3, title: "Character Development", category: "Design" },
-    { id: 4, title: "Story Animation", category: "Animation" },
-    { id: 5, title: "Digital Painting", category: "Art" },
-    { id: 6, title: "Concept Art Series", category: "Design" },
-    { id: 7, title: "Motion Graphics", category: "Animation" },
-    { id: 8, title: "Character Illustration", category: "Illustration" },
-    { id: 9, title: "Environmental Design", category: "Design" },
-  ];
-
   return (
-    <div className="bg-stone-50">
+    <div>
       {/* Hero Section */}
-      <section className="relative bg-slate-900 text-stone-200 pb-32 px-6">
+      <section className="relative bg-slate-900 text-amber-50 pb-32 px-6">
         <div className="mx-auto max-w-7xl flex flex-col items-center text-center">
           <img src="/hero.svg" alt="Hero" className="w-3/7" />
           <h1 className="text-6xl md:text-6xl font-bold tracking-tighter text-balance">
@@ -39,27 +27,27 @@ export default function Home() {
       </section>
 
       {/* Introduction Section */}
-      <section className="bg-stone-50 pt-20 px-6">
+      <section className="pt-20 px-6">
         <div className="mx-auto max-w-7xl">
           <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8 text-slate-900">
+              <h2 className="text-4xl md:text-5xl font-bold mb-8">
                 Hi, I'm Zitu
               </h2>
-              <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+              <p className="text-lg mb-6 leading-relaxed">
                 I&apos;m a skilled full-stack developer and a cyber security
                 analyst, I am dedicated to turning ideas into innovative and
                 secure web applications. Explore my latest projects and
                 articles, showcasing my expertise in web development and cyber
                 security.
               </p>
-              <p className="text-gray-700 mb-8 leading-relaxed">
+              <p className="mb-8 leading-relaxed">
                 Transforming ideas into solutions with innovation and security.
               </p>
               <Link href="/about">
                 <WiredButton
                   elevation={2}
-                  className="bg-teal-400 uppercase text-slate-900"
+                  className="bg-amber-100 hover:bg-amber-200 dark:bg-amber-800 dark:hover:bg-amber-700 uppercase text-slate-900 dark:text-slate-50"
                 >
                   Learn more about me
                 </WiredButton>
@@ -78,7 +66,7 @@ export default function Home() {
       </section>
 
       {/* Portfolio & Chat CTA Section */}
-      <section className="bg-white py-20">
+      <section className="bg-amber-50 dark:bg-amber-950 py-20">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Portfolio */}
