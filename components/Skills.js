@@ -37,7 +37,7 @@ export default function Skills() {
 
   return (
     <>
-      <h2 className="font-bold text-8xl mt-48 mb-16 w-full text-center max-lg:mt-32 max-lg:mb-8 max-lg:text-7xl max-md:text-6xl max-sm:text-5xl max-xs:text-4xl">
+      <h2 className="font-bold text-8xl mt-16 mb-16 w-full text-center max-lg:mt-32 max-lg:mb-8 max-lg:text-7xl max-md:text-6xl max-sm:text-5xl max-xs:text-4xl">
         Skills
       </h2>
       <div className="flex w-full h-screen relative items-center justify-center max-md:h-auto">

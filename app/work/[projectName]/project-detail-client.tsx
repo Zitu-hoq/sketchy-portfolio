@@ -29,18 +29,18 @@ const TRANSPARENT_PIXEL =
 
 export default function ProjectDetailClient({ project }: { project: any }) {
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen">
       <div className="mx-auto max-w-4xl px-6 py-12">
         <WiredLink
           href="/work"
           elevation={2}
           style={
             {
-              "--wired-link-decoration-color": "#26A69A",
+              "--wired-link-decoration-color": "#eab308",
             } as React.CSSProperties
           }
         >
-          <span className="inline-flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors">
+          <span className="inline-flex items-center gap-2 hover:opacity-80 transition-colors">
             <svg
               width="20"
               height="20"
@@ -76,10 +76,8 @@ export default function ProjectDetailClient({ project }: { project: any }) {
           )}
         </div>
 
-        <h1 className="text-3xl font-bold text-slate-900 mb-2">
-          {project.name}
-        </h1>
-        <p className="text-teal-400 font-semibold uppercase text-sm mb-4">
+        <h1 className="text-3xl font-bold mb-2">{project.name}</h1>
+        <p className="text-amber-600 dark:text-amber-400 font-semibold uppercase text-sm mb-4">
           {project.type}
         </p>
 
@@ -88,7 +86,7 @@ export default function ProjectDetailClient({ project }: { project: any }) {
             {project.technologies.map((tech: string) => (
               <span
                 key={tech}
-                className="inline-block bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded"
+                className="inline-block bg-amber-100 dark:bg-amber-900 text-xs font-medium px-2.5 py-0.5 rounded"
               >
                 {tech}
               </span>
@@ -96,21 +94,27 @@ export default function ProjectDetailClient({ project }: { project: any }) {
           </div>
         )}
 
-        <p className="text-slate-700 leading-relaxed text-lg mb-8">
-          {project.summary}
-        </p>
+        <p className="leading-relaxed text-lg mb-8">{project.summary}</p>
 
-        <div className="flex items-center gap-6 pt-6 border-t border-gray-200">
+        <div className="flex items-center gap-6 pt-6 border-t border-amber-200 dark:border-amber-900">
           {project.githubLink && (
             <WiredIconButton
-              onClick={() => window.open(project.githubLink, '_blank', 'noopener,noreferrer')}
+              onClick={() =>
+                window.open(project.githubLink, "_blank", "noopener,noreferrer")
+              }
+              className="hover:opacity-80"
             >
               <GithubIcon width={32} height={32} />
             </WiredIconButton>
           )}
           {project.link && (
             <a href={project.link} target="_blank" rel="noopener noreferrer">
-              <WiredButton elevation={1}>Visit Project</WiredButton>
+              <WiredButton
+                elevation={1}
+                className="bg-amber-100 hover:bg-amber-200 dark:bg-amber-800 dark:hover:bg-amber-700 uppercase text-slate-900 dark:text-slate-50"
+              >
+                Visit Project
+              </WiredButton>
             </a>
           )}
         </div>

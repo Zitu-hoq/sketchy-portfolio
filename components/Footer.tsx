@@ -68,7 +68,7 @@ export default function Footer() {
 
   return (
     <footer
-      className={`bg-slate-900 text-white mt-20 ${isWorkPage ? "[clip-path:url(#top-arch)]" : "rounded-t-3xl"}`}
+      className={`bg-slate-900 text-amber-50 mt-20 ${isWorkPage ? "[clip-path:url(#top-arch)]" : "rounded-t-3xl"}`}
     >
       {/* Sketchy filter for social icons */}
       <svg className="absolute w-0 h-0" aria-hidden="true">
@@ -113,7 +113,7 @@ export default function Footer() {
               href="mailto:zhzitu121@gmail.com"
               style={
                 {
-                  "--wired-link-decoration-color": "#26A69A",
+                  "--wired-link-decoration-color": "#fcd34d",
                 } as React.CSSProperties
               }
             >
@@ -125,7 +125,7 @@ export default function Footer() {
           </p>
           <WiredButton
             elevation={1}
-            className="bg-teal-200 text-slate-900"
+            className="bg-amber-200 text-slate-900 hover:bg-amber-300"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             Let's go to Top
@@ -156,30 +156,35 @@ export default function Footer() {
               </p>
               <div className="flex gap-6 text-2xl">
                 <WiredIconButton
+                  className="hover:opacity-80"
                   onClick={() => window.open("#", "_blank")}
                   style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 >
                   <GithubIcon className="w-8 h-8" />
                 </WiredIconButton>
                 <WiredIconButton
+                  className="hover:opacity-80"
                   onClick={() => window.open("#", "_blank")}
                   style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 >
                   <LinkedInIcon className="w-8 h-8" />
                 </WiredIconButton>
                 <WiredIconButton
+                  className="hover:opacity-80"
                   onClick={() => window.open("#", "_blank")}
                   style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 >
                   <TwitterIcon className="w-8 h-8" />
                 </WiredIconButton>
                 <WiredIconButton
+                  className="hover:opacity-80"
                   onClick={() => window.open("#", "_blank")}
                   style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 >
                   <FacebookIcon className="w-8 h-8" />
                 </WiredIconButton>
                 <WiredIconButton
+                  className="hover:opacity-80"
                   onClick={() => window.open("#", "_blank")}
                   style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 >
@@ -234,7 +239,7 @@ export default function Footer() {
               <div>
                 <WiredButton
                   elevation={1}
-                  className="bg-teal-400 text-black hover:text-white hover:bg-slate-600"
+                  className="bg-amber-200 text-slate-900 hover:bg-amber-300"
                 >
                   {submitted ? "Sent!" : "Submit"}
                 </WiredButton>

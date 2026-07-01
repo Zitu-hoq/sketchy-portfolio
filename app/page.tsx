@@ -57,7 +57,7 @@ export default function Home() {
               <img
                 src="/profile.svg"
                 alt="Profile"
-                className="h-full w-full object-cover rounded-lg fill-slate-900"
+                className="h-full w-full object-cover rounded-lg fill-amber-50 dark:fill-amber-950"
               />
             </div>
           </div>
@@ -79,10 +79,8 @@ export default function Home() {
                 />
               </div>
               <div className="space-y-4">
-                <h2 className="text-4xl font-bold text-slate-900">
-                  My Portfolio
-                </h2>
-                <p className="text-slate-900 text-2xl">
+                <h2 className="text-4xl font-bold">My Portfolio</h2>
+                <p className="text-2xl">
                   Browse through a selection of my most recent&nbsp;
                   <WiredLink
                     elevation={2}
@@ -90,7 +88,7 @@ export default function Home() {
                     className="text-2xl"
                     style={
                       {
-                        "--wired-link-decoration-color": "#26A69A",
+                        "--wired-link-decoration-color": "#eab308",
                       } as React.CSSProperties
                     }
                   >
@@ -110,10 +108,8 @@ export default function Home() {
                 />
               </div>
               <div className="space-y-4">
-                <h2 className="text-4xl text-slate-900 font-bold">
-                  Let&apos;s chat!
-                </h2>
-                <p className="text-slate-900 text-2xl">
+                <h2 className="text-4xl font-bold">Let&apos;s chat!</h2>
+                <p className="text-2xl">
                   I love working with teams, agencies and individuals &nbsp;
                   <WiredLink
                     elevation={2}
@@ -121,7 +117,7 @@ export default function Home() {
                     className="text-2xl"
                     style={
                       {
-                        "--wired-link-decoration-color": "#26A69A",
+                        "--wired-link-decoration-color": "#eab308",
                       } as React.CSSProperties
                     }
                   >

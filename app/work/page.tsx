@@ -15,7 +15,7 @@ export default async function WorkPage() {
   }
 
   return (
-    <div className="bg-stone-50">
+    <div>
       <WorkContent projects={projects} />
     </div>
   );

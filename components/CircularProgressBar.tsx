@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import React from "react";
 
 interface CircularProgressBarProps {
   title: string;
@@ -35,7 +34,7 @@ const CircularProgressBar = ({ title, progress }: CircularProgressBarProps) => {
             cy="60"
             r={radius}
             fill="none"
-            className="stroke-green-700 dark:stroke-green-500"
+            className="stroke-slate-900 dark:stroke-amber-50"
             strokeWidth="10"
             strokeDasharray={circumference}
             strokeDashoffset={circumference}

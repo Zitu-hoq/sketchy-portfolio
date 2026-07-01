@@ -48,13 +48,17 @@ export default function WorkContent({ projects }: { projects: any[] }) {
 
   return (
     <>
-      <section className="bg-stone-50 py-6 px-6 border-b border-gray-200">
+      <section className="py-6 px-6 border-b border-amber-200 dark:border-amber-800">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap gap-4">
             {categories.map((category) => (
               <div
                 key={category}
-                className={filter === category ? "bg-teal-400 rounded-lg" : ""}
+                className={
+                  filter === category
+                    ? "bg-amber-100 rounded-lg dark:bg-amber-600"
+                    : ""
+                }
               >
                 <WiredButton elevation={2} onClick={() => setFilter(category)}>
                   {category}
@@ -65,7 +69,7 @@ export default function WorkContent({ projects }: { projects: any[] }) {
         </div>
       </section>
 
-      <section className="bg-stone-50 py-20 px-6">
+      <section className="py-20 px-6">
         <div className="mx-auto max-w-7xl">
           {rows.map((row, idx) => (
             <div
@@ -101,25 +105,23 @@ export default function WorkContent({ projects }: { projects: any[] }) {
                       />
                     )}
                   </div>
-                  <p className="text-xl text-teal-400 font-semibold uppercase mb-2">
+                  <p className="text-xl text-amber-600 dark:text-amber-400 font-semibold uppercase mb-2">
                     {project.type}
                   </p>
-                  <h3 className="font-bold text-lg text-slate-900 mb-2">
-                    {project.name}
-                  </h3>
+                  <h3 className="font-bold text-lg mb-2">{project.name}</h3>
                   {project.technologies && project.technologies.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-2">
                       {project.technologies.map((tech: string) => (
                         <span
                           key={tech}
-                          className="inline-block bg-teal-100 text-teal-800 text-xs font-medium px-2.5 py-0.5 rounded"
+                          className="inline-block bg-amber-100 dark:bg-amber-900 text-xs font-medium px-2.5 py-0.5 rounded"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
                   )}
-                  <p className="text-md text-slate-700 leading-relaxed">
+                  <p className="text-md leading-relaxed">
                     {truncateWords(project.summary, 20)}
                   </p>
                 </Link>
