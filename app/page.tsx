@@ -17,24 +17,24 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-slate-900 text-amber-50 pb-32 px-6">
-        <div className="mx-auto max-w-7xl flex flex-col items-center text-center">
-          <img src="/hero.svg" alt="Hero" className="w-3/7" />
-          <h1 className="text-6xl md:text-6xl font-bold tracking-tighter text-balance">
+      <section className="relative bg-slate-900 text-amber-50 pb-32 max-sm:pt-8 px-6 max-sm:h-screen">
+        <div className="mx-auto max-w-7xl flex flex-col items-center text-center max-sm:justify-center">
+          <img src="/hero.svg" alt="Hero" className="w-3/7 max-sm:w-4/7" />
+          <h1 className="text-6xl max-sm:text-3xl max-sm:pt-4 max-md:text-5xl font-bold tracking-tighter text-balance">
             Md Ziaul Hoque Zitu
           </h1>
         </div>
       </section>
 
       {/* Introduction Section */}
-      <section className="pt-20 px-6">
+      <section className="pt-20 max-sm:pt-4 px-6">
         <div className="mx-auto max-w-7xl">
           <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-8">
+              <h2 className="text-5xl max-sm:text-3xl font-bold mb-8 max-sm:mb-4">
                 Hi, I'm Zitu
               </h2>
-              <p className="text-lg mb-6 leading-relaxed">
+              <p className="text-lg max-sm:text-sm mb-6 max-sm:mb-4 leading-relaxed">
                 I&apos;m a skilled full-stack developer and a cyber security
                 analyst, I am dedicated to turning ideas into innovative and
                 secure web applications. Explore my latest projects and
@@ -66,11 +66,11 @@ export default function Home() {
       </section>
 
       {/* Portfolio & Chat CTA Section */}
-      <section className="bg-amber-50 dark:bg-amber-950 py-20">
+      <section className="bg-amber-50 dark:bg-amber-950 py-20 max-sm:py-4 max-md:py-14">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-md:gap-8">
             {/* Portfolio */}
-            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <div className="flex flex-col items-center justify-center space-y-6 max-sm:space-y-4 text-center">
               <div className="w-full max-w-xs h-64 bg-transparent rounded-lg flex items-center justify-center">
                 <img
                   src="/files.svg"
@@ -79,13 +79,15 @@ export default function Home() {
                 />
               </div>
               <div className="space-y-4">
-                <h2 className="text-4xl font-bold">My Portfolio</h2>
-                <p className="text-2xl">
+                <h2 className="text-4xl max-sm:text-3xl font-bold">
+                  My Portfolio
+                </h2>
+                <p className="text-2xl max-sm:text-xl">
                   Browse through a selection of my most recent&nbsp;
                   <WiredLink
                     elevation={2}
                     href="/work"
-                    className="text-2xl"
+                    className="text-2xl max-sm:text-xl"
                     style={
                       {
                         "--wired-link-decoration-color": "#eab308",
@@ -99,7 +101,7 @@ export default function Home() {
             </div>
 
             {/* Chat CTA */}
-            <div className="flex flex-col items-center justify-center space-y-6 text-center">
+            <div className="flex flex-col items-center justify-center space-y-6 text-center max-sm:space-y-4">
               <div className="w-full max-w-xs h-64 bg-transparent rounded-lg flex items-center justify-center">
                 <img
                   src="/chat.svg"
@@ -108,13 +110,15 @@ export default function Home() {
                 />
               </div>
               <div className="space-y-4">
-                <h2 className="text-4xl font-bold">Let&apos;s chat!</h2>
-                <p className="text-2xl">
+                <h2 className="text-4xl max-sm:text-3xl font-bold">
+                  Let&apos;s chat!
+                </h2>
+                <p className="text-2xl max-sm:text-xl">
                   I love working with teams, agencies and individuals &nbsp;
                   <WiredLink
                     elevation={2}
                     href="/contact"
-                    className="text-2xl"
+                    className="text-2xl max-sm:text-xl"
                     style={
                       {
                         "--wired-link-decoration-color": "#eab308",

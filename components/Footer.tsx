@@ -68,7 +68,7 @@ export default function Footer() {
 
   return (
     <footer
-      className={`bg-slate-900 text-amber-50 mt-20 ${isWorkPage ? "[clip-path:url(#top-arch)]" : "rounded-t-3xl"}`}
+      className={`bg-slate-900 text-amber-50 mt-20 max-sm:mt-8 ${isWorkPage ? "[clip-path:url(#top-arch)]" : "rounded-t-3xl"}`}
     >
       {/* Sketchy filter for social icons */}
       <svg className="absolute w-0 h-0" aria-hidden="true">
@@ -101,11 +101,11 @@ export default function Footer() {
       </svg>
 
       {isWorkPage && (
-        <div className="max-w-7xl mx-auto px-6 pt-24 pb-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
+        <div className="max-w-7xl mx-auto px-6 max-sm:px-2 pt-24 pb-4 max-sm:pb-0 text-center">
+          <h2 className="text-3xl max-sm:text-lg font-bold mb-4 max-sm:mb-0">
             Thank you for taking the time to scroll through my work!
           </h2>
-          <p className="text-xl text-white/70 mb-2">
+          <p className="text-xl max-sm:text-sm text-white/70 mb-2">
             Want to chat? Drop me a message{" "}
             <WiredLink
               elevation={2}
@@ -120,7 +120,7 @@ export default function Footer() {
               here
             </WiredLink>
           </p>
-          <p className="text-lg text-white/50 py-4">
+          <p className="text-lg max-sm:text-xs text-white/50 py-4">
             Ready to resurface? Hit the button below to head back up!
           </p>
           <WiredButton
@@ -134,16 +134,18 @@ export default function Footer() {
       )}
 
       <div
-        className={`max-w-7xl mx-auto px-6 ${isWorkPage ? "pt-8 pb-16" : "py-16"}`}
+        className={`max-w-7xl mx-auto px-6 ${isWorkPage ? "pt-8 pb-16" : "py-16 max-sm:py-8"}`}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-md:gap-8">
           {/* Left Section */}
           <div className="flex flex-col h-full justify-between">
             <div>
-              <p className="text-2xl mb-6">Want to chat? Please email me :</p>
+              <p className="text-2xl max-sm:text-lg mb-6 max-sm:mb-2">
+                Want to chat? Please email me :
+              </p>
               <a
-                href="mailto:hey@joycemuller.com"
-                className="text-yellow-300 text-2xl hover:text-yellow-200 transition-colors"
+                href="mailto:zhzitu121@gmail.com"
+                className="text-yellow-300 text-2xl max-sm:mb-2 max-sm:text-lg hover:text-yellow-200 transition-colors"
               >
                 zhzitu121@gmail.com
               </a>
@@ -151,10 +153,10 @@ export default function Footer() {
 
             {/* social icons */}
             <div>
-              <p className="text-xl mb-6">
+              <p className="text-xl max-sm:text-lg mb-6 max-sm:mb-2">
                 You can find my socials & github below!
               </p>
-              <div className="flex gap-6 text-2xl">
+              <div className="flex gap-6 max-sm:gap-2 text-2xl max-sm:text-sm">
                 <WiredIconButton
                   className="hover:opacity-80"
                   onClick={() => window.open("#", "_blank")}
@@ -193,7 +195,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="text-lg text-white/60">
+            <div className="text-lg max-sm:text-xs text-white/60">
               <p>©2025 Zitu Hoque. All rights reserved.</p>
             </div>
           </div>
@@ -202,11 +204,15 @@ export default function Footer() {
           {/* Right Section - Contact Form */}
           <div>
             <div>
-              <img src="/mail.gif" alt="mail" className="h-32 -ml-12" />
+              <img
+                src="/mail.gif"
+                alt="mail"
+                className="h-32 -ml-12 max-sm:h-16 max-sm:-ml-6"
+              />
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-2xl mb-3 -mt-4">
+                <label className="block text-2xl mb-3 -mt-4 max-sm:text-lg max-sm:mb-0">
                   Email <span className="text-white/50">(required)</span>
                 </label>
                 <WiredInput
@@ -222,7 +228,7 @@ export default function Footer() {
               </div>
 
               <div>
-                <label className="block text-2xl mb-3">
+                <label className="block text-2xl mb-3 max-sm:text-lg max-sm:mb-0">
                   Message <span className="text-white/50">(required)</span>
                 </label>
                 <WiredTextarea

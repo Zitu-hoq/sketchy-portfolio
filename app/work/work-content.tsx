@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
@@ -71,7 +72,13 @@ export default function WorkContent({ projects }: { projects: any[] }) {
 
       <section className="py-20 px-6">
         <div className="mx-auto max-w-7xl">
-          {rows.map((row, idx) => (
+          <motion.div
+            key={filter}
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+          >
+            {rows.map((row, idx) => (
             <div
               key={idx}
               className={`grid grid-cols-1 gap-8 ${
@@ -128,6 +135,7 @@ export default function WorkContent({ projects }: { projects: any[] }) {
               ))}
             </div>
           ))}
+          </motion.div>
         </div>
       </section>
     </>
