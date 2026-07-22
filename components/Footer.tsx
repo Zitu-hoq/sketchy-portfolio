@@ -68,7 +68,7 @@ export default function Footer() {
 
   return (
     <footer
-      className={`bg-slate-900 text-amber-50 mt-20 max-sm:mt-8 ${isWorkPage ? "[clip-path:url(#top-arch)]" : "rounded-t-3xl"}`}
+      className={`bg-slate-900 text-amber-50 mt-20 max-sm:mt-8 ${isWorkPage ? "max-md:rounded-t-3xl md:[clip-path:url(#top-arch)]" : "rounded-t-3xl"}`}
     >
       {/* Sketchy filter for social icons */}
       <svg className="absolute w-0 h-0" aria-hidden="true">
@@ -101,7 +101,7 @@ export default function Footer() {
       </svg>
 
       {isWorkPage && (
-        <div className="max-w-7xl mx-auto px-6 max-sm:px-2 pt-24 pb-4 max-sm:pb-0 text-center">
+        <div className="max-w-7xl mx-auto px-6 max-sm:px-2 pt-6 pb-1 text-center">
           <h2 className="text-3xl max-sm:text-lg font-bold mb-4 max-sm:mb-0">
             Thank you for taking the time to scroll through my work!
           </h2>
@@ -134,12 +134,12 @@ export default function Footer() {
       )}
 
       <div
-        className={`max-w-7xl mx-auto px-6 ${isWorkPage ? "pt-8 pb-16" : "py-16 max-sm:py-8"}`}
+        className={`max-w-7xl mx-auto px-6 ${isWorkPage ? "pt-1 pb-16" : "py-16 max-sm:py-8"}`}
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-md:gap-8">
           {/* Left Section */}
-          <div className="flex flex-col h-full justify-between">
-            <div>
+          <div className="flex flex-col h-full justify-between max-md:contents">
+            <div className="max-md:order-1">
               <p className="text-2xl max-sm:text-lg mb-6 max-sm:mb-2">
                 Want to chat? Please email me :
               </p>
@@ -152,11 +152,11 @@ export default function Footer() {
             </div>
 
             {/* social icons */}
-            <div>
+            <div className="max-md:order-5">
               <p className="text-xl max-sm:text-lg mb-6 max-sm:mb-2">
                 You can find my socials & github below!
               </p>
-              <div className="flex gap-6 max-sm:gap-2 text-2xl max-sm:text-sm">
+              <div className="flex gap-6 max-sm:gap-2 text-2xl max-sm:text-sm max-md:justify-between">
                 <WiredIconButton
                   className="hover:opacity-80"
                   onClick={() => window.open("#", "_blank")}
@@ -195,22 +195,24 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="text-lg max-sm:text-xs text-white/60">
-              <p>©2025 Zitu Hoque. All rights reserved.</p>
+            <div className="text-lg max-sm:text-xs text-white/60 max-md:order-6">
+              <p>
+                ©{new Date().getFullYear()} Zitu Hoque. All rights reserved.
+              </p>
             </div>
           </div>
           {/* mail gif */}
 
           {/* Right Section - Contact Form */}
-          <div>
-            <div>
+          <div className="max-md:contents">
+            <div className="max-md:order-2">
               <img
                 src="/mail.gif"
                 alt="mail"
                 className="h-32 -ml-12 max-sm:h-16 max-sm:-ml-6"
               />
             </div>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6 max-md:order-3">
               <div>
                 <label className="block text-2xl mb-3 -mt-4 max-sm:text-lg max-sm:mb-0">
                   Email <span className="text-white/50">(required)</span>

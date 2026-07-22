@@ -99,7 +99,7 @@ export function Navbar() {
         <motion.div
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="min-w-[60vw] flex flex-col justify-between items-center z-40 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900/90 backdrop-blur-md rounded-lg py-32 sm:hidden"
+          className="min-w-[60vw] flex flex-col justify-between items-center z-40 fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-slate-900/90 backdrop-blur-md rounded-lg py-16 sm:hidden"
         >
           <nav className="flex items-center flex-col justify-center">
             <CustomMobileLink

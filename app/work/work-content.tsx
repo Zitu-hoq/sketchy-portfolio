@@ -1,5 +1,7 @@
 "use client";
 
+import Loading from "@/components/Loading";
+import { useData } from "@/context/DataContext";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -26,7 +28,9 @@ function truncateWords(text: string | undefined, max: number): string {
   return words.slice(0, max).join(" ") + "...";
 }
 
-export default function WorkContent({ projects }: { projects: any[] }) {
+export default function WorkContent() {
+  const { data, loading } = useData();
+  const projects = data.projects;
   const [filter, setFilter] = useState("All");
 
   const categories = ["All", ...new Set(projects.map((p) => p.type))];
@@ -46,6 +50,8 @@ export default function WorkContent({ projects }: { projects: any[] }) {
     }
     return result;
   }, [filtered]);
+
+  if (loading) return <Loading />;
 
   return (
     <>
@@ -70,7 +76,7 @@ export default function WorkContent({ projects }: { projects: any[] }) {
         </div>
       </section>
 
-      <section className="py-20 px-6">
+      <section className="pt-20 max-md:pt-4 pb-1 px-6 text-justify">
         <div className="mx-auto max-w-7xl">
           <motion.div
             key={filter}
@@ -79,62 +85,67 @@ export default function WorkContent({ projects }: { projects: any[] }) {
             transition={{ duration: 0.5, ease: "easeInOut" }}
           >
             {rows.map((row, idx) => (
-            <div
-              key={idx}
-              className={`grid grid-cols-1 gap-8 ${
-                row.cols === 2 ? "mb-16 md:grid-cols-2" : "mb-10 md:grid-cols-3"
-              }`}
-            >
-              {row.items.map((project) => (
-                <Link
-                  key={project.$id}
-                  href={`/work/${encodeURIComponent(project.name)}`}
-                  className="group block"
-                >
-                  <div
-                    className={`bg-transparent mb-4 relative ${
-                      row.cols === 2 ? "h-80" : "h-64"
-                    }`}
+              <div
+                key={idx}
+                className={`grid grid-cols-1 gap-8 ${
+                  row.cols === 2
+                    ? "mb-16 md:grid-cols-2"
+                    : "mb-10 md:grid-cols-3"
+                }`}
+              >
+                {row.items.map((project) => (
+                  <Link
+                    key={project.$id}
+                    href={`/work/${encodeURIComponent(project.name)}`}
+                    className="group block"
                   >
-                    {project.img && (
-                      <Image
-                        src={project.img}
-                        alt={project.name}
-                        fill
-                        className="object-cover scale-97 group-hover:grayscale transition"
-                      />
-                    )}
-                    {project.img && (
-                      <WiredImage
-                        src={TRANSPARENT_PIXEL}
-                        elevation={1}
-                        className="absolute inset-0 w-full h-full pointer-events-none"
-                      />
-                    )}
-                  </div>
-                  <p className="text-xl text-amber-600 dark:text-amber-400 font-semibold uppercase mb-2">
-                    {project.type}
-                  </p>
-                  <h3 className="font-bold text-lg mb-2">{project.name}</h3>
-                  {project.technologies && project.technologies.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mb-2">
-                      {project.technologies.map((tech: string) => (
-                        <span
-                          key={tech}
-                          className="inline-block bg-amber-100 dark:bg-amber-900 text-xs font-medium px-2.5 py-0.5 rounded"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                    <div
+                      className={`bg-transparent mb-4 relative ${
+                        row.cols === 2 ? "h-80" : "h-64"
+                      }`}
+                    >
+                      {project.img && (
+                        <Image
+                          src={project.img}
+                          alt={project.name}
+                          fill
+                          className="object-cover scale-97 group-hover:grayscale transition"
+                        />
+                      )}
+                      {project.img && (
+                        <WiredImage
+                          src={TRANSPARENT_PIXEL}
+                          elevation={1}
+                          className="absolute inset-0 w-full h-full pointer-events-none"
+                        />
+                      )}
                     </div>
-                  )}
-                  <p className="text-md leading-relaxed">
-                    {truncateWords(project.summary, 20)}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          ))}
+                    <p className="text-xl max-md:text-sm text-amber-600 dark:text-amber-400 font-semibold uppercase mb-2">
+                      {project.type}
+                    </p>
+                    <h3 className="font-bold text-lg max-md:text-sm mb-2">
+                      {project.name}
+                    </h3>
+                    {project.technologies &&
+                      project.technologies.length > 0 && (
+                        <div className="flex flex-wrap gap-2 mb-2">
+                          {project.technologies.map((tech: string) => (
+                            <span
+                              key={tech}
+                              className="inline-block bg-amber-100 dark:bg-amber-900 text-xs font-medium px-2.5 py-0.5 rounded"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    <p className="text-md max-md:text-xs leading-relaxed">
+                      {truncateWords(project.summary, 20)}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>

@@ -9,7 +9,7 @@ const Details = ({ cert_name, provider, year, location, details, link }) => {
   return (
     <li
       ref={ref}
-      className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between max-md:my-4 max-md:w-[65%] max-xs:ml-auto max-xs:mr-4"
+      className="my-8 first:mt-0 last:mb-0 w-[60%] mx-auto flex flex-col items-center justify-between max-md:my-4 max-md:w-full max-md:ml-12 max-md:mx-0 max-xs:ml-auto max-xs:mr-4"
     >
       <LiIcon reference={ref} />
       <motion.div
@@ -50,20 +50,20 @@ function Certifications() {
   const certificates = data.certificationData;
 
   return (
-    <div className="mt-32 mb-64 max-lg:mb-32 max-md:mb-16 max-md:mt-16 max-sm:mb-8 max-sm:mt-8">
+    <div className="mt-32 mb-64 max-md:mb-12 max-md:mt-8 text-justify">
       <h2 className="font-bold text-8xl mb-32 w-full text-center max-lg:mt-4 max-lg:mb-8 max-lg:text-7xl max-md:text-6xl max-sm:text-5xl max-xs:text-4xl max-xs:mb-4">
         Certifications
       </h2>
       <div
         ref={ref}
-        className="w-[75%] mx-auto relative max-md:w-[85%] max-xs:[95%]"
+        className="w-[75%] mx-auto relative max-md:w-[92%] max-xs:w-[96%] max-md:-ml-4"
       >
         <motion.div
           style={{ scaleY: scrollYProgress }}
-          className="absolute left-9 top-0 w-[4px] h-full bg-slate-900 origin-top dark:bg-amber-100 max-xs:w-[3px]"
+          className="absolute left-9 top-0 w-1 h-full bg-slate-900 origin-top dark:bg-amber-100"
         />
 
-        <ul className="w-full flex flex-col items-start justify-between ml-4 max-md:ml-2 max-sm:ml-1">
+        <ul className="w-full flex flex-col items-start justify-between ml-4">
           {certificates
             .slice()
             .reverse()

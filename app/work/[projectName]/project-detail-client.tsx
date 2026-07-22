@@ -1,8 +1,11 @@
 "use client";
 
 import { GithubIcon } from "@/components/Icons";
+import Loading from "@/components/Loading";
+import { useData } from "@/context/DataContext";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 const WiredLink = dynamic(
   () => import("wired-elements-react").then((m) => m.WiredLink),
@@ -27,13 +30,24 @@ const WiredIconButton = dynamic(
 const TRANSPARENT_PIXEL =
   "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=";
 
-export default function ProjectDetailClient({ project }: { project: any }) {
+export default function ProjectDetailClient({
+  projectName,
+}: {
+  projectName: string;
+}) {
+  const { data, loading } = useData();
+  const project = data.projects.find((p: any) => p.name === projectName);
+
+  if (loading) return <Loading />;
+  if (!project) return notFound();
+
   return (
-    <div className="min-h-screen">
-      <div className="mx-auto max-w-4xl px-6 py-12">
+    <div className="min-h-screen text-justify">
+      <div className="mx-auto max-w-4xl px-6 py-12 flex flex-col">
         <WiredLink
           href="/work"
           elevation={2}
+          className="max-md:order-last max-md:mt-8"
           style={
             {
               "--wired-link-decoration-color": "#eab308",
@@ -58,7 +72,7 @@ export default function ProjectDetailClient({ project }: { project: any }) {
           </span>
         </WiredLink>
 
-        <div className="relative aspect-video w-full mb-8 mt-8">
+        <div className="relative aspect-video w-full my-8 max-md:my-2">
           {project.img && (
             <Image
               src={project.img}
@@ -76,8 +90,10 @@ export default function ProjectDetailClient({ project }: { project: any }) {
           )}
         </div>
 
-        <h1 className="text-3xl font-bold mb-2">{project.name}</h1>
-        <p className="text-amber-600 dark:text-amber-400 font-semibold uppercase text-sm mb-4">
+        <h1 className="text-3xl max-md:text-xl font-bold mb-2">
+          {project.name}
+        </h1>
+        <p className="text-amber-600 dark:text-amber-400 font-semibold uppercase text-sm max-md:text-xs mb-4">
           {project.type}
         </p>
 
@@ -94,9 +110,11 @@ export default function ProjectDetailClient({ project }: { project: any }) {
           </div>
         )}
 
-        <p className="leading-relaxed text-lg mb-8">{project.summary}</p>
+        <p className="leading-relaxed text-lg max-md:text-sm mb-8">
+          {project.summary}
+        </p>
 
-        <div className="flex items-center gap-6 pt-6 border-t border-amber-200 dark:border-amber-900">
+        <div className="flex items-center justify-between gap-6 pt-6 border-t border-amber-200 dark:border-amber-900">
           {project.githubLink && (
             <WiredIconButton
               onClick={() =>
@@ -104,14 +122,18 @@ export default function ProjectDetailClient({ project }: { project: any }) {
               }
               className="hover:opacity-80"
             >
-              <GithubIcon width={32} height={32} />
+              <GithubIcon
+                width={32}
+                height={32}
+                className="max-md:w-6 max-md:h-6"
+              />
             </WiredIconButton>
           )}
           {project.link && (
             <a href={project.link} target="_blank" rel="noopener noreferrer">
               <WiredButton
                 elevation={1}
-                className="bg-amber-100 hover:bg-amber-200 dark:bg-amber-800 dark:hover:bg-amber-700 uppercase text-slate-900 dark:text-slate-50"
+                className="bg-amber-100 hover:bg-amber-200 dark:bg-amber-800 dark:hover:bg-amber-700 uppercase text-slate-900 dark:text-slate-50 max-md:text-sm"
               >
                 Visit Project
               </WiredButton>
