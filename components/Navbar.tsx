@@ -45,8 +45,8 @@ export function Navbar() {
           className="flex items-center gap-2 uppercase text-xl hover:text-teal-400 transition"
         >
           <img
-            src="/logo.PNG"
-            alt="Logo"
+            src="/icon.png"
+            alt="Home icon"
             className="w-8 h-8 rounded-full object-cover"
           />
           <span className={`${linkClass("/")} max-sm:hidden`}>Home</span>

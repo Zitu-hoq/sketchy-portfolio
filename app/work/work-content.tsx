@@ -109,6 +109,7 @@ export default function WorkContent() {
                           src={project.img}
                           alt={project.name}
                           fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
                           className="object-cover scale-97 group-hover:grayscale transition"
                         />
                       )}

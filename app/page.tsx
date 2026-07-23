@@ -29,7 +29,7 @@ export default function Home() {
       {/* Introduction Section */}
       <section className="pt-20 max-sm:pt-4 px-6">
         <div className="mx-auto max-w-7xl">
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-24">
+          <div className="grid md:grid-cols-2 gap-16 items-center mb-24 text-justify">
             <div>
               <h2 className="text-5xl max-sm:text-3xl font-bold mb-8 max-sm:mb-4">
                 Hi, I'm Zitu

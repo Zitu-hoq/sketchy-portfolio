@@ -41,6 +41,7 @@ export default function Footer() {
   const [message, setMessage] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const pathname = usePathname();
+
   const isWorkPage = pathname === "/work";
   const emailRef = useCallback((el: any) => {
     if (!el) return;
@@ -102,7 +103,7 @@ export default function Footer() {
 
       {isWorkPage && (
         <div className="max-w-7xl mx-auto px-6 max-sm:px-2 pt-6 pb-1 text-center">
-          <h2 className="text-3xl max-sm:text-lg font-bold mb-4 max-sm:mb-0">
+          <h2 className="text-3xl max-sm:text-lg font-bold mb-4 max-sm:mb-0 md:mt-12">
             Thank you for taking the time to scroll through my work!
           </h2>
           <p className="text-xl max-sm:text-sm text-white/70 mb-2">

@@ -1,7 +1,13 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { databases } from "@/lib/appwrite";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 interface DataContextType {
   data: {
@@ -43,9 +49,12 @@ export const DataProvider = ({ children }: { children: ReactNode }) => {
 
         const responses = await Promise.all(
           Object.entries(collectionIds).map(async ([key, collectionId]) => {
-            const response = await databases.listDocuments(databaseId, collectionId!);
+            const response = await databases.listDocuments(
+              databaseId,
+              collectionId!,
+            );
             return { key, documents: response.documents };
-          })
+          }),
         );
 
         const newData = responses.reduce((acc: any, { key, documents }) => {
