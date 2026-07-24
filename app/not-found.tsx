@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const WiredCard = dynamic(
   () => import("wired-elements-react").then((m) => m.WiredCard),
@@ -15,7 +15,7 @@ const WiredButton = dynamic(
 
 export default function NotFound() {
   return (
-    <div className="min-h-[calc(100vh-5rem)] flex items-center justify-center px-4 transition-colors">
+    <div className="min-h-[calc(100dvh-5rem)] max-sm:min-h-[50dvh] flex items-center justify-center px-4 transition-colors">
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}

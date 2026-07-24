@@ -63,7 +63,7 @@ function Certifications() {
           className="absolute left-9 top-0 w-1 h-full bg-slate-900 origin-top dark:bg-amber-100"
         />
 
-        <ul className="w-full flex flex-col items-start justify-between ml-4">
+        <ul className="w-full flex flex-col items-start justify-between p-4">
           {certificates
             .slice()
             .reverse()

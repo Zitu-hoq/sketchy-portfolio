@@ -42,12 +42,12 @@ export default function ProjectDetailClient({
   if (!project) return notFound();
 
   return (
-    <div className="min-h-screen text-justify">
-      <div className="mx-auto max-w-4xl px-6 py-12 flex flex-col">
+    <div className="min-h-screen max-md:min-h-0 text-justify">
+      <div className="mx-auto max-w-4xl px-6 py-12 max-md:py-6 flex flex-col">
         <WiredLink
           href="/work"
           elevation={2}
-          className="max-md:order-last max-md:mt-8"
+          className="max-md:order-last max-md:mt-8 max-md:self-center"
           style={
             {
               "--wired-link-decoration-color": "#eab308",

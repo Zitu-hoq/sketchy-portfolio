@@ -191,7 +191,7 @@ export default function Footer() {
                   onClick={() => window.open("#", "_blank")}
                   style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 >
-                  <InstaIcon className="w-8 h-8" />
+                  <InstaIcon className="w-4 h-4" />
                 </WiredIconButton>
               </div>
             </div>

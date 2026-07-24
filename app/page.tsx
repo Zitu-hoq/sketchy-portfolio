@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-slate-900 text-amber-50 pb-32 max-sm:pt-8 px-6 max-sm:h-screen">
+      <section className="relative -mt-4 bg-slate-900 text-amber-50 pb-32 max-sm:pt-8 px-6 max-sm:h-[50vh]">
         <div className="mx-auto max-w-7xl flex flex-col items-center text-center max-sm:justify-center">
           <img src="/hero.svg" alt="Hero" className="w-3/7 max-sm:w-4/7" />
           <h1 className="text-6xl max-sm:text-3xl max-sm:pt-4 max-md:text-5xl font-bold tracking-tighter text-balance">

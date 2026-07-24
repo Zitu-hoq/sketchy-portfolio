@@ -2,12 +2,15 @@ import { Navbar } from "@/components/Navbar";
 import { DataProvider } from "@/context/DataContext";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Comic_Neue } from "next/font/google";
 import Footer from "./footer-client";
 import "./globals.css";
 import { ThemeProvider } from "./theme-provider";
 
-const geist = Geist({ subsets: ["latin"] });
+const comicNeue = Comic_Neue({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Zitu Hoq's portfolio",
@@ -25,15 +28,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geist.className} antialiased bg-amber-50 dark:bg-amber-950 text-slate-900 dark:text-amber-50 transition-colors`}
+        className={`${comicNeue.className} antialiased bg-amber-50 dark:bg-amber-950 text-slate-900 dark:text-amber-50 transition-colors`}
         style={{
-          fontFamily: '"Caveat Brush", "Comic Sans MS", "Comic Sans", cursive',
+          fontFamily: `"Comic Sans MS", "Comic Sans", ${comicNeue.style.fontFamily}, serif`,
         }}
       >
         <ThemeProvider>
           <DataProvider>
             <Navbar />
-            <main>{children}</main>
+            <main className="pt-24">{children}</main>
             <Footer />
             {process.env.NODE_ENV === "production" && <Analytics />}
           </DataProvider>

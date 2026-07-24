@@ -94,7 +94,7 @@ export default function AboutPage() {
                 <img
                   src="/building-app.svg"
                   alt="building-app"
-                  className="w-full h-full object-contain grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-contain hover:grayscale transition-all duration-500"
                 />
               </div>
               <h3 className="text-4xl max-md:text-2xl font-bold">
@@ -112,7 +112,7 @@ export default function AboutPage() {
                 <img
                   src="/coding.svg"
                   alt="coding"
-                  className="w-3/5 h-full object-contain grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-3/5 h-full object-contain hover:grayscale transition-all duration-500"
                 />
               </div>
               <h3 className="text-4xl max-md:text-2xl font-bold">
@@ -130,7 +130,7 @@ export default function AboutPage() {
                 <img
                   src="/fix-bug.svg"
                   alt="fix-bug"
-                  className="w-full h-full object-contain grayscale hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-contain hover:grayscale transition-all duration-500"
                 />
               </div>
               <h3 className="text-4xl max-md:text-2xl font-bold">
