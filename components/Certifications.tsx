@@ -4,7 +4,21 @@ import { useData } from "../context/DataContext";
 import LiIcon from "./LiIcon";
 import Loading from "./Loading";
 
-const Details = ({ cert_name, provider, year, location, details, link }) => {
+const Details = ({
+  cert_name,
+  provider,
+  year,
+  location,
+  details,
+  link,
+}: {
+  cert_name: string;
+  provider: string;
+  year: string;
+  location: string;
+  details: string;
+  link: string;
+}) => {
   const ref = useRef(null);
   return (
     <li

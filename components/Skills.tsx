@@ -4,7 +4,7 @@ import CircularProgressBar from "./CircularProgressBar";
 import Loading from "./Loading";
 import { Pro_Skill } from "./ProjectData";
 
-const ProgressBar = ({ title, progress }) => {
+const ProgressBar = ({ title, progress }: { title: string; progress: number }) => {
   return (
     <>
       <div className="flex w-full justify-between mb-1 max-sm:mb-0.5 max-xs:w-[90%]">
