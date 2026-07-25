@@ -4,20 +4,26 @@ import CircularProgressBar from "./CircularProgressBar";
 import Loading from "./Loading";
 import { Pro_Skill } from "./ProjectData";
 
-const ProgressBar = ({ title, progress }: { title: string; progress: number }) => {
+const ProgressBar = ({
+  title,
+  progress,
+}: {
+  title: string;
+  progress: number;
+}) => {
   return (
     <>
       <div className="flex w-full justify-between mb-1 max-sm:mb-0.5 max-xs:w-[90%]">
-        <span className="text-base uppercase font-medium text-dark dark:text-light max-sm:text-sm max-xs:text-xs">
+        <span className="text-base uppercase font-medium text-secondary dark:text-secondary max-sm:text-sm max-xs:text-xs">
           {title}
         </span>
-        <span className="text-base font-medium text-dark dark:text-light max-sm:text-sm max-xs:text-xs">
+        <span className="text-base font-medium text-secondary dark:text-secondary max-sm:text-sm max-xs:text-xs">
           {progress}%
         </span>
       </div>
       <div className="w-full bg-gray-200 rounded-full h-2.5 mb-6 dark:bg-gray-700 max-sm:h-2 max-xs:h-1.5 max-md:mb-4 max-xs:mb-2 max-xs:w-[90%]">
         <motion.div
-          className="bg-primary h-2.5 rounded-full dark:bg-primaryDark max-sm:h-2 max-xs:h-1.5"
+          className="bg-secondary h-2.5 rounded-full dark:bg-secondary max-sm:h-2 max-xs:h-1.5"
           initial={{ width: 0 }}
           whileInView={{ width: `${progress}%` }}
           viewport={{ once: true }}
@@ -44,8 +50,8 @@ export default function Skills() {
         <div className="grid grid-cols-12 gap-24 gap-y-16 max-lg:gap-12 max-md:gap-y-8 max-md:gap-0 max-sm:gap-y-4">
           <div className="col-span-6 max-sm:col-span-12">
             <div className="w-full flex flex-col items-center justify-center p-6 relative max-md:p-4 max-sm:p-2">
-              <h3 className="mb-4 text-lg text-center font-bold uppercase text-dark/75 dark:text-light/75">
-                Web Developement
+              <h3 className="mb-4 text-lg text-center font-bold uppercase text-secondary/75 dark:text-secondary/75">
+                Web Development
               </h3>
 
               {App_Skill.map((framwork, index) => (
@@ -60,7 +66,7 @@ export default function Skills() {
 
           <div className="col-span-6 max-sm:col-span-12">
             <div className="w-full flex flex-col items-center justify-center p-6 relative max-md:p-4 max-sm:p-2">
-              <h3 className="mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75">
+              <h3 className="mb-4 text-lg font-bold uppercase text-secondary/75 dark:text-secondary/75">
                 Cyber Security
               </h3>
 
@@ -78,7 +84,7 @@ export default function Skills() {
 
           <div className="col-span-12">
             <div className="w-full flex flex-col items-center justify-center p-6 relative">
-              <h3 className="mb-4 text-lg font-bold uppercase text-dark/75 dark:text-light/75">
+              <h3 className="mb-4 text-lg font-bold uppercase text-secondary/75 dark:text-secondary/75">
                 Professional Skills
               </h3>
               <div className="w-full flex flex-row justify-center items-center max-sm:flex-wrap">

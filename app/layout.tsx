@@ -28,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${comicNeue.className} antialiased bg-amber-50 dark:bg-amber-950 text-slate-900 dark:text-amber-50 transition-colors`}
+        className={`${comicNeue.className} antialiased bg-primary dark:bg-primary text-secondary dark:text-secondary transition-colors`}
         style={{
           fontFamily: `"Comic Sans MS", "Comic Sans", ${comicNeue.style.fontFamily}, serif`,
         }}

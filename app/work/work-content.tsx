@@ -55,7 +55,7 @@ export default function WorkContent() {
 
   return (
     <>
-      <section className="py-6 px-6 border-b border-amber-200 dark:border-amber-800">
+      <section className="py-6 px-6 border-b border-btn-primary-hover dark:border-btn-primary">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap gap-4">
             {categories.map((category) => (
@@ -63,7 +63,7 @@ export default function WorkContent() {
                 key={category}
                 className={
                   filter === category
-                    ? "bg-amber-100 rounded-lg dark:bg-amber-600"
+                    ? "bg-btn-primary rounded-lg dark:bg-btn-primary"
                     : ""
                 }
               >
@@ -121,7 +121,7 @@ export default function WorkContent() {
                         />
                       )}
                     </div>
-                    <p className="text-xl max-md:text-sm text-amber-600 dark:text-amber-400 font-semibold uppercase mb-2">
+                    <p className="text-xl max-md:text-sm text-link font-semibold uppercase mb-2">
                       {project.type}
                     </p>
                     <h3 className="font-bold text-lg max-md:text-sm mb-2">
@@ -133,7 +133,7 @@ export default function WorkContent() {
                           {project.technologies.map((tech: string) => (
                             <span
                               key={tech}
-                              className="inline-block bg-amber-100 dark:bg-amber-900 text-xs font-medium px-2.5 py-0.5 rounded"
+                              className="inline-block bg-btn-primary dark:bg-btn-primary text-xs font-medium px-2.5 py-0.5 rounded"
                             >
                               {tech}
                             </span>

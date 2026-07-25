@@ -74,7 +74,7 @@ function Certifications() {
       >
         <motion.div
           style={{ scaleY: scrollYProgress }}
-          className="absolute left-9 top-0 w-1 h-full bg-slate-900 origin-top dark:bg-amber-100"
+          className="absolute left-9 top-0 w-1 h-full bg-secondary origin-top dark:bg-secondary"
         />
 
         <ul className="w-full flex flex-col items-start justify-between p-4">

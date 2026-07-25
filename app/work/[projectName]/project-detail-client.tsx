@@ -93,7 +93,7 @@ export default function ProjectDetailClient({
         <h1 className="text-3xl max-md:text-xl font-bold mb-2">
           {project.name}
         </h1>
-        <p className="text-amber-600 dark:text-amber-400 font-semibold uppercase text-sm max-md:text-xs mb-4">
+        <p className="text-link font-semibold uppercase text-sm max-md:text-xs mb-4">
           {project.type}
         </p>
 
@@ -102,7 +102,7 @@ export default function ProjectDetailClient({
             {project.technologies.map((tech: string) => (
               <span
                 key={tech}
-                className="inline-block bg-amber-100 dark:bg-amber-900 text-xs font-medium px-2.5 py-0.5 rounded"
+                className="inline-block bg-btn-primary dark:bg-btn-primary text-xs font-medium px-2.5 py-0.5 rounded"
               >
                 {tech}
               </span>
@@ -114,7 +114,7 @@ export default function ProjectDetailClient({
           {project.summary}
         </p>
 
-        <div className="flex items-center justify-between gap-6 pt-6 border-t border-amber-200 dark:border-amber-900">
+        <div className="flex items-center justify-between gap-6 pt-6 border-t border-btn-primary-hover dark:border-btn-primary">
           {project.githubLink && (
             <WiredIconButton
               onClick={() =>
@@ -133,7 +133,7 @@ export default function ProjectDetailClient({
             <a href={project.link} target="_blank" rel="noopener noreferrer">
               <WiredButton
                 elevation={1}
-                className="bg-amber-100 hover:bg-amber-200 dark:bg-amber-800 dark:hover:bg-amber-700 uppercase text-slate-900 dark:text-slate-50 max-md:text-sm"
+                className="bg-btn-primary hover:bg-btn-primary-hover dark:bg-btn-primary dark:hover:bg-btn-primary-hover uppercase text-secondary dark:text-slate-50 max-md:text-sm"
               >
                 Visit Project
               </WiredButton>

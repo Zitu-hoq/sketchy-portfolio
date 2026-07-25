@@ -36,12 +36,12 @@ export function Navbar() {
   const CustomMobileLink = ({ href, title, toggle }) => (
     <Link
       href={href}
-      className={`relative group my-2 text-2xl ${pathname === href ? "text-amber-400" : "text-white hover:text-amber-400"}`}
+      className={`relative group my-2 text-2xl ${pathname === href ? "text-link" : "text-white hover:text-link"}`}
       onClick={toggle}
     >
       {title}
       <span
-        className={`h-[1px] inline-block absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${pathname === href ? "w-full bg-amber-400" : "w-0 bg-white"}`}
+        className={`h-[1px] inline-block absolute left-0 -bottom-0.5 group-hover:w-full transition-[width] ease duration-300 ${pathname === href ? "w-full bg-link" : "w-0 bg-white"}`}
       >
         &nbsp;
       </span>
@@ -50,7 +50,7 @@ export function Navbar() {
 
   const linkClass = (path: string) =>
     `text-xl font-medium uppercase tracking-wider transition ${
-      pathname === path ? "text-amber-400" : "hover:text-amber-400"
+      pathname === path ? "text-link" : "hover:text-link"
     }`;
 
   return (

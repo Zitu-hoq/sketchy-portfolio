@@ -2,7 +2,7 @@
 
 const Loading = () => {
   return (
-    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-amber-100/60 dark:bg-amber-950/60 backdrop-blur-lg transition-colors">
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-primary/60 dark:bg-primary/60 backdrop-blur-lg transition-colors">
       <img
         src="/load.gif"
         alt="Loading"

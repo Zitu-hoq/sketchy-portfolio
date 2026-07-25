@@ -30,7 +30,7 @@ export default function NotFound() {
             <Link href="/">
               <WiredButton
                 elevation={2}
-                className="bg-amber-100 hover:bg-amber-200 dark:bg-amber-800 dark:hover:bg-amber-700 uppercase text-slate-900 dark:text-slate-50"
+                className="bg-btn-primary hover:bg-btn-primary-hover dark:bg-btn-primary dark:hover:bg-btn-primary-hover uppercase text-secondary dark:text-slate-50"
               >
                 Go Back Home
               </WiredButton>

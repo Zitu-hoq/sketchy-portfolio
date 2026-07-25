@@ -126,7 +126,7 @@ export default function Footer() {
           </p>
           <WiredButton
             elevation={1}
-            className="bg-amber-200 text-slate-900 hover:bg-amber-300"
+            className="bg-btn-primary-hover text-secondary hover:bg-amber-300"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           >
             Let's go to Top
@@ -146,7 +146,7 @@ export default function Footer() {
               </p>
               <a
                 href="mailto:zhzitu121@gmail.com"
-                className="text-yellow-300 text-2xl max-sm:mb-2 max-sm:text-lg hover:text-yellow-200 transition-colors"
+                className="text-link text-2xl max-sm:mb-2 max-sm:text-lg hover:text-yellow-200 transition-colors"
               >
                 zhzitu121@gmail.com
               </a>
@@ -248,7 +248,7 @@ export default function Footer() {
               <div>
                 <WiredButton
                   elevation={1}
-                  className="bg-amber-200 text-slate-900 hover:bg-amber-300"
+                  className="bg-btn-primary-hover text-secondary hover:bg-amber-300"
                 >
                   {submitted ? "Sent!" : "Submit"}
                 </WiredButton>

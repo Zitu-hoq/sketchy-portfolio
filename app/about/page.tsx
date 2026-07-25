@@ -36,7 +36,7 @@ export default function AboutPage() {
                 </h2>
                 <p className="text-lg max-md:text-base mb-6 max-md:mb-4 leading-relaxed">
                   Hi, I&apos;m
-                  <span className="text-slate-950 dark:text-amber-100 text-xl max-md:text-lg">
+                  <span className="text-secondary dark:text-secondary text-xl max-md:text-lg">
                     &nbsp;Md Ziaul Hoque Zitu
                   </span>
                   ,&nbsp;
@@ -71,8 +71,8 @@ export default function AboutPage() {
             </div>
 
             <div className="flex flex-col gap-6 self-center items-center max-md:order-1">
-              <div className="relative h-max rounded-2xl border-2 border-solid border-dark bg-light p-8 dark:bg-amber-950 dark:border-amber-50">
-                <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-4xl bg-dark dark:bg-light" />
+              <div className="relative h-max rounded-2xl border-2 border-solid border-secondary bg-primary p-8 dark:bg-primary dark:border-secondary">
+                <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-4xl bg-secondary dark:bg-primary" />
                 <Image
                   src={proPicDark}
                   alt="developer image"

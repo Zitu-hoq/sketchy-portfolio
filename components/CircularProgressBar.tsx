@@ -34,7 +34,7 @@ const CircularProgressBar = ({ title, progress }: CircularProgressBarProps) => {
             cy="60"
             r={radius}
             fill="none"
-            className="stroke-slate-900 dark:stroke-amber-50"
+            className="stroke-secondary dark:stroke-secondary"
             strokeWidth="10"
             strokeDasharray={circumference}
             strokeDashoffset={circumference}
@@ -46,12 +46,12 @@ const CircularProgressBar = ({ title, progress }: CircularProgressBarProps) => {
           />
         </svg>
         <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-          <span className="text-xl font-medium text-dark dark:text-light sm:text-base">
+          <span className="text-xl font-medium text-secondary dark:text-secondary sm:text-base">
             {progress}%
           </span>
         </div>
       </div>
-      <span className="text-base uppercase font-medium text-dark dark:text-light mt-2 sm:text-sm">
+      <span className="text-base uppercase font-medium text-secondary dark:text-secondary mt-2 sm:text-sm">
         {title}
       </span>
     </div>

@@ -47,7 +47,7 @@ export default function Home() {
               <Link href="/about">
                 <WiredButton
                   elevation={2}
-                  className="bg-amber-100 hover:bg-amber-200 dark:bg-amber-800 dark:hover:bg-amber-700 uppercase text-slate-900 dark:text-slate-50"
+                  className="bg-btn-primary hover:bg-btn-primary-hover dark:bg-btn-primary dark:hover:bg-btn-primary-hover uppercase text-secondary dark:text-slate-50"
                 >
                   Learn more about me
                 </WiredButton>
@@ -57,7 +57,7 @@ export default function Home() {
               <img
                 src="/profile.svg"
                 alt="Profile"
-                className="h-full w-full object-cover rounded-lg fill-amber-50 dark:fill-amber-950"
+                className="h-full w-full object-cover rounded-lg fill-primary dark:fill-primary"
               />
             </div>
           </div>
@@ -66,7 +66,7 @@ export default function Home() {
       </section>
 
       {/* Portfolio & Chat CTA Section */}
-      <section className="bg-amber-50 dark:bg-amber-950 py-20 max-sm:py-4 max-md:py-14">
+      <section className="bg-primary dark:bg-primary py-20 max-sm:py-4 max-md:py-14">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-md:gap-8">
             {/* Portfolio */}
@@ -87,7 +87,7 @@ export default function Home() {
                   <WiredLink
                     elevation={2}
                     href="/work"
-                    className="text-2xl max-sm:text-xl"
+                    className="text-2xl max-sm:text-xl text-secondary"
                     style={
                       {
                         "--wired-link-decoration-color": "#eab308",
@@ -118,7 +118,7 @@ export default function Home() {
                   <WiredLink
                     elevation={2}
                     href="/contact"
-                    className="text-2xl max-sm:text-xl"
+                    className="text-2xl max-sm:text-xl text-secondary"
                     style={
                       {
                         "--wired-link-decoration-color": "#eab308",
