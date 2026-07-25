@@ -2,7 +2,7 @@
 
 import { GithubIcon } from "@/components/Icons";
 import Loading from "@/components/Loading";
-import { useData } from "@/context/DataContext";
+import { Project, useData } from "@/context/DataContext";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -36,7 +36,7 @@ export default function ProjectDetailClient({
   projectName: string;
 }) {
   const { data, loading } = useData();
-  const project = data.projects.find((p: any) => p.name === projectName);
+  const project = data.projects.find((p: Project) => p.name === projectName);
 
   if (loading) return <Loading />;
   if (!project) return notFound();

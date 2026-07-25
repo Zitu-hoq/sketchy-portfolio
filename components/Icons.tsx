@@ -1,4 +1,9 @@
-export const GithubIcon = ({ className, ...rest }) => (
+interface SVGProps {
+  className?: string;
+  [key: string]: unknown;
+}
+
+export const GithubIcon = ({ className, ...rest }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -15,7 +20,7 @@ export const GithubIcon = ({ className, ...rest }) => (
   </svg>
 );
 
-export const TwitterIcon = ({ className, ...rest }) => (
+export const TwitterIcon = ({ className, ...rest }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -32,7 +37,7 @@ export const TwitterIcon = ({ className, ...rest }) => (
   </svg>
 );
 // #0A66C2
-export const LinkedInIcon = ({ className, ...rest }) => (
+export const LinkedInIcon = ({ className, ...rest }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -61,7 +66,7 @@ export const LinkedInIcon = ({ className, ...rest }) => (
   </svg>
 );
 
-export const InstaIcon = ({ className, ...rest }) => (
+export const InstaIcon = ({ className, ...rest }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1.25em"
@@ -78,7 +83,7 @@ export const InstaIcon = ({ className, ...rest }) => (
   </svg>
 );
 
-export const FacebookIcon = ({ className, ...rest }) => (
+export const FacebookIcon = ({ className, ...rest }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"
@@ -109,7 +114,7 @@ export const FacebookIcon = ({ className, ...rest }) => (
 
 
 
-export const SunIcon = ({ className, ...rest }) => (
+export const SunIcon = ({ className, ...rest }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -287,7 +292,7 @@ export const SunIcon = ({ className, ...rest }) => (
   </svg>
 );
 
-export const MoonIcon = ({ className, ...rest }) => (
+export const MoonIcon = ({ className, ...rest }: SVGProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"

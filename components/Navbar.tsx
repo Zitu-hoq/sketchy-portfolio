@@ -33,7 +33,7 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", controlNavbar);
   }, []);
 
-  const CustomMobileLink = ({ href, title, toggle }) => (
+  const CustomMobileLink = ({ href, title, toggle }: { href: string; title: string; toggle: () => void }) => (
     <Link
       href={href}
       className={`relative group my-2 text-2xl ${pathname === href ? "text-link" : "text-white hover:text-link"}`}

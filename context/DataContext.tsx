@@ -9,15 +9,51 @@ import {
   useState,
 } from "react";
 
+export interface AboutPageData {
+  title: string;
+  biography: string[];
+  proPicDark: string;
+  total_project: number;
+  experience: number;
+}
+
+export interface Skill {
+  frameworkName: string;
+  progress: number;
+}
+
+export interface Certification {
+  full_name: string;
+  name: string;
+  provider: string;
+  year: string;
+  location: string;
+  details: string;
+  link: string;
+}
+
+export interface Project {
+  $id: string;
+  name: string;
+  type: string;
+  img: string;
+  summary: string;
+  technologies: string[];
+  githubLink: string;
+  link: string;
+}
+
+export interface PortfolioData {
+  home_pageData: any[];
+  aboutPage: AboutPageData[];
+  app_skill: Skill[];
+  cyber_skill: Skill[];
+  certificationData: Certification[];
+  projects: Project[];
+}
+
 interface DataContextType {
-  data: {
-    home_pageData: any[];
-    aboutPage: any[];
-    app_skill: any[];
-    cyber_skill: any[];
-    certificationData: any[];
-    projects: any[];
-  };
+  data: PortfolioData;
   loading: boolean;
 }
 
