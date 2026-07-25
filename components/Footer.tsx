@@ -7,9 +7,11 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from "@/components/Icons";
+import { AnimatePresence, motion } from "framer-motion";
+import SketchyButton from "@/components/SketchyButton";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 
 const WiredButton = dynamic(
   () => import("wired-elements-react").then((m) => m.WiredButton),
@@ -39,7 +41,12 @@ const WiredTextarea = dynamic(
 export default function Footer() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const formRef = useRef<HTMLFormElement>(null);
   const pathname = usePathname();
 
   const isWorkPage = pathname === "/work";
@@ -55,16 +62,61 @@ export default function Footer() {
     });
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateForm = () => {
+    if (!email.includes("@") || !email.includes(".")) {
+      return { valid: false as const, error: "Please enter a valid email address." };
+    }
+    const wordCount = message.trim().split(/\s+/).filter(Boolean).length;
+    if (wordCount < 10) {
+      return { valid: false as const, error: `Message must be at least 10 words (currently ${wordCount}).` };
+    }
+    return { valid: true as const };
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log("Form submitted:", { email, message });
-    setSubmitted(true);
-    setTimeout(() => {
+
+    const validation = validateForm();
+    if (!validation.valid) {
+      setErrorMessage(validation.error);
+      setStatus("error");
+      setDialogOpen(true);
+      return;
+    }
+
+    setStatus("submitting");
+
+    try {
+      const res = await fetch("/api/submit-form", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, message }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setErrorMessage(data.error || "Failed to submit form.");
+        setStatus("error");
+        setDialogOpen(true);
+        return;
+      }
+
+      setStatus("success");
+      setDialogOpen(true);
       setEmail("");
       setMessage("");
-      setSubmitted(false);
-    }, 2000);
+    } catch {
+      setErrorMessage("Something went wrong. Please try again.");
+      setStatus("error");
+      setDialogOpen(true);
+    }
+  };
+
+  const closeDialog = () => {
+    setDialogOpen(false);
+    setStatus("idle");
+    setErrorMessage("");
   };
 
   return (
@@ -213,7 +265,11 @@ export default function Footer() {
                 className="h-32 -ml-12 max-sm:h-16 max-sm:-ml-6"
               />
             </div>
-            <form onSubmit={handleSubmit} className="space-y-6 max-md:order-3">
+            <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className="space-y-6 max-md:order-3"
+            >
               <div>
                 <label className="block text-2xl mb-3 -mt-4 max-sm:text-lg max-sm:mb-0">
                   Email <span className="text-white/50">(required)</span>
@@ -248,15 +304,72 @@ export default function Footer() {
               <div>
                 <WiredButton
                   elevation={1}
+                  disabled={status === "submitting"}
+                  onClick={() => formRef.current?.requestSubmit()}
                   className="bg-btn-primary-hover text-secondary hover:bg-amber-300"
                 >
-                  {submitted ? "Sent!" : "Submit"}
+                  {status === "submitting" ? "Submitting..." : "Submit"}
                 </WiredButton>
               </div>
             </form>
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {dialogOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+            onClick={closeDialog}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", duration: 0.4 }}
+              className="bg-primary dark:bg-slate-800 rounded-2xl p-8 max-sm:p-5 max-w-md max-sm:mx-3 shadow-2xl text-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {status === "success" ? (
+                <>
+                  <div className="text-5xl mb-4">🎉</div>
+                  <h3 className="text-2xl max-sm:text-xl font-bold text-secondary dark:text-slate-100 mb-2">
+                    Thank You!
+                  </h3>
+                  <p className="text-secondary dark:text-slate-300 mb-6 max-sm:text-sm">
+                    Thank you for reaching out! I'll get back to you soon.
+                  </p>
+                  <SketchyButton
+                    className="bg-btn-primary-hover text-secondary"
+                    onClick={closeDialog}
+                  >
+                    OK
+                  </SketchyButton>
+                </>
+              ) : (
+                <>
+                  <div className="text-5xl mb-4">😞</div>
+                  <h3 className="text-2xl max-sm:text-xl font-bold text-secondary dark:text-slate-100 mb-2">
+                    Oops!
+                  </h3>
+                  <p className="text-secondary dark:text-slate-300 mb-6 max-sm:text-sm">
+                    {errorMessage || "Message is not sent. Please try after some time."}
+                  </p>
+                  <SketchyButton
+                    className="bg-btn-primary-hover text-secondary"
+                    onClick={closeDialog}
+                  >
+                    Close
+                  </SketchyButton>
+                </>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </footer>
   );
 }
