@@ -3,6 +3,7 @@
 import Tape from "@/components/Tape";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const WiredButton = dynamic(
   () => import("wired-elements-react").then((m) => m.WiredButton),
@@ -14,6 +15,7 @@ const WiredLink = dynamic(
 );
 
 export default function Home() {
+  const router = useRouter();
   return (
     <div>
       {/* Hero Section */}
@@ -93,6 +95,10 @@ export default function Home() {
                         "--wired-link-decoration-color": "#eab308",
                       } as React.CSSProperties
                     }
+                    onClick={(e: React.MouseEvent) => {
+                      e.preventDefault();
+                      router.push("/work");
+                    }}
                   >
                     work here.
                   </WiredLink>
@@ -117,13 +123,18 @@ export default function Home() {
                   I love working with teams, agencies and individuals &nbsp;
                   <WiredLink
                     elevation={2}
-                    href="/contact"
                     className="text-2xl max-sm:text-xl text-secondary"
                     style={
                       {
                         "--wired-link-decoration-color": "#eab308",
                       } as React.CSSProperties
                     }
+                    onClick={(e: React.MouseEvent) => {
+                      e.preventDefault();
+                      document
+                        .getElementById("contact")
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
                   >
                     get in touch.
                   </WiredLink>

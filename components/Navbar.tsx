@@ -59,14 +59,14 @@ export function Navbar() {
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
           <Link
             href="/"
-            className="flex items-center gap-2 uppercase text-xl hover:text-teal-400 transition"
+            className={`flex items-center gap-2 ${linkClass("/")}`}
           >
             <img
               src="/icon.png"
               alt="Home icon"
               className="w-8 h-8 rounded-full object-cover"
             />
-            <span className={`${linkClass("/")} max-sm:hidden`}>Home</span>
+            <span className="max-sm:hidden">Home</span>
           </Link>
           <div className="hidden sm:flex items-center gap-6">
             <Link href="/work" className={linkClass("/work")}>

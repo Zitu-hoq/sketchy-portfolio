@@ -5,7 +5,7 @@ import Loading from "@/components/Loading";
 import { Project, useData } from "@/context/DataContext";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, useRouter } from "next/navigation";
 
 const WiredLink = dynamic(
   () => import("wired-elements-react").then((m) => m.WiredLink),
@@ -36,6 +36,7 @@ export default function ProjectDetailClient({
   projectName: string;
 }) {
   const { data, loading } = useData();
+  const router = useRouter();
   const project = data.projects.find((p: Project) => p.name === projectName);
 
   if (loading) return <Loading />;
@@ -51,8 +52,13 @@ export default function ProjectDetailClient({
           style={
             {
               "--wired-link-decoration-color": "#eab308",
+              "--wired-link-underline": "false",
             } as React.CSSProperties
           }
+          onClick={(e: React.MouseEvent) => {
+            e.preventDefault();
+            router.push("/work");
+          }}
         >
           <span className="inline-flex items-center gap-2 hover:opacity-80 transition-colors">
             <svg
@@ -78,6 +84,7 @@ export default function ProjectDetailClient({
               src={project.img}
               alt={project.name}
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover scale-97"
             />
           )}

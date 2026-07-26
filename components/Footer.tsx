@@ -7,8 +7,8 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from "@/components/Icons";
-import { AnimatePresence, motion } from "framer-motion";
 import SketchyButton from "@/components/SketchyButton";
+import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 import { useCallback, useRef, useState } from "react";
@@ -64,11 +64,17 @@ export default function Footer() {
 
   const validateForm = () => {
     if (!email.includes("@") || !email.includes(".")) {
-      return { valid: false as const, error: "Please enter a valid email address." };
+      return {
+        valid: false as const,
+        error: "Please enter a valid email address.",
+      };
     }
     const wordCount = message.trim().split(/\s+/).filter(Boolean).length;
     if (wordCount < 10) {
-      return { valid: false as const, error: `Message must be at least 10 words (currently ${wordCount}).` };
+      return {
+        valid: false as const,
+        error: `Message must be at least 10 words (currently ${wordCount}).`,
+      };
     }
     return { valid: true as const };
   };
@@ -163,7 +169,8 @@ export default function Footer() {
             <WiredLink
               elevation={2}
               className=""
-              href="mailto:zhzitu121@gmail.com"
+              href="https://www.linkedin.com/in/zitu-hoq"
+              target="_blank"
               style={
                 {
                   "--wired-link-decoration-color": "#fcd34d",
@@ -212,14 +219,21 @@ export default function Footer() {
               <div className="flex gap-6 max-sm:gap-2 text-2xl max-sm:text-sm max-md:justify-between">
                 <WiredIconButton
                   className="hover:opacity-80"
-                  onClick={() => window.open("#", "_blank")}
+                  onClick={() =>
+                    window.open("https://github.com/Zitu-hoq", "_blank")
+                  }
                   style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 >
                   <GithubIcon className="w-8 h-8" />
                 </WiredIconButton>
                 <WiredIconButton
                   className="hover:opacity-80"
-                  onClick={() => window.open("#", "_blank")}
+                  onClick={() =>
+                    window.open(
+                      "https://www.linkedin.com/in/zitu-hoq",
+                      "_blank",
+                    )
+                  }
                   style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 >
                   <LinkedInIcon className="w-8 h-8" />
@@ -233,14 +247,18 @@ export default function Footer() {
                 </WiredIconButton>
                 <WiredIconButton
                   className="hover:opacity-80"
-                  onClick={() => window.open("#", "_blank")}
+                  onClick={() =>
+                    window.open("https://www.facebook.com/zh_zitu", "_blank")
+                  }
                   style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 >
                   <FacebookIcon className="w-8 h-8" />
                 </WiredIconButton>
                 <WiredIconButton
                   className="hover:opacity-80"
-                  onClick={() => window.open("#", "_blank")}
+                  onClick={() =>
+                    window.open("https://www.instagram.com/zitu_hoq", "_blank")
+                  }
                   style={{ color: "#000", filter: "brightness(0) invert(1)" }}
                 >
                   <InstaIcon className="w-4 h-4" />
@@ -257,7 +275,7 @@ export default function Footer() {
           {/* mail gif */}
 
           {/* Right Section - Contact Form */}
-          <div className="max-md:contents">
+          <div id="contact" className="max-md:contents">
             <div className="max-md:order-2">
               <img
                 src="/mail.gif"
@@ -356,7 +374,8 @@ export default function Footer() {
                     Oops!
                   </h3>
                   <p className="text-secondary dark:text-slate-300 mb-6 max-sm:text-sm">
-                    {errorMessage || "Message is not sent. Please try after some time."}
+                    {errorMessage ||
+                      "Message is not sent. Please try after some time."}
                   </p>
                   <SketchyButton
                     className="bg-btn-primary-hover text-secondary"
