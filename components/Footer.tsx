@@ -266,7 +266,7 @@ export default function Footer() {
               </div>
             </div>
 
-            <div className="text-lg max-sm:text-xs text-white/60 max-md:order-6">
+            <div className="text-lg max-sm:text-xs max-sm:text-center text-white/60 max-md:order-6">
               <p>
                 ©{new Date().getFullYear()} Zitu Hoque. All rights reserved.
               </p>
@@ -275,7 +275,7 @@ export default function Footer() {
           {/* mail gif */}
 
           {/* Right Section - Contact Form */}
-          <div id="contact" className="max-md:contents">
+          <div className="max-md:contents">
             <div className="max-md:order-2">
               <img
                 src="/mail.gif"
@@ -284,12 +284,13 @@ export default function Footer() {
               />
             </div>
             <form
+              id="contact"
               ref={formRef}
               onSubmit={handleSubmit}
               className="space-y-6 max-md:order-3"
             >
               <div>
-                <label className="block text-2xl mb-3 -mt-4 max-sm:text-lg max-sm:mb-0">
+                <label className="block text-2xl mb-3 -mt-4 max-sm:-mt-10 max-sm:text-lg max-sm:mb-0">
                   Email <span className="text-white/50">(required)</span>
                 </label>
                 <WiredInput

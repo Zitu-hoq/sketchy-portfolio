@@ -2,7 +2,17 @@ import { motion, useScroll } from "framer-motion";
 import { useRef } from "react";
 import LiIcon from "./LiIcon";
 
-const Details = ({ type, time, place, info }: { type: string; time: string; place: string; info: string }) => {
+const Details = ({
+  type,
+  time,
+  place,
+  info,
+}: {
+  type: string;
+  time: string;
+  place: string;
+  info: string;
+}) => {
   const ref = useRef(null);
   return (
     <li
@@ -35,7 +45,7 @@ function Education() {
   return (
     <div className="my-32 max-md:my-4 text-justify">
       <h2 className="font-bold text-8xl mb-32 w-full text-center max-md:mb-8 max-lg:text-7xl max-md:text-6xl max-sm:text-5xl max-xs:text-4xl">
-        Educations
+        Education
       </h2>
       <div
         ref={ref}

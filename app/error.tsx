@@ -17,8 +17,17 @@ const WiredButton = dynamic(
   () => import("wired-elements-react").then((m) => m.WiredButton),
   { ssr: false },
 );
+const WiredLink = dynamic(
+  () => import("wired-elements-react").then((m) => m.WiredLink),
+  { ssr: false },
+);
 
-export default function NotFound() {
+export default function Error({
+  error,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   return (
     <div className="min-h-[calc(100dvh-5rem)] max-sm:min-h-[50dvh] flex items-center justify-center px-4 transition-colors">
       <motion.div
@@ -28,9 +37,24 @@ export default function NotFound() {
       >
         <WiredCard elevation={3}>
           <div className="flex flex-col items-center gap-6 px-12 py-16 max-sm:px-6 max-sm:py-10 text-center">
-            <h1 className="text-8xl max-sm:text-6xl font-bold">404</h1>
-            <p className="text-xl max-sm:text-lg">
-              Oops! This page got lost in the wires.
+            <h1 className="text-8xl max-sm:text-6xl font-bold">504</h1>
+            <p className="text-xl max-sm:text-lg text-orange-600 dark:text-orange-400">
+              {error.message || "Something went wrong."}
+            </p>
+            <p className="text-lg max-sm:text-base">
+              You can also reach out to me directly —{" "}
+              <WiredLink
+                elevation={2}
+                href="#contact"
+                className="text-lg max-sm:text-base text-secondary"
+                style={
+                  {
+                    "--wired-link-decoration-color": "#eab308",
+                  } as React.CSSProperties
+                }
+              >
+                get in touch.
+              </WiredLink>
             </p>
             <Link href="/">
               <WiredButton

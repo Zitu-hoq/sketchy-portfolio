@@ -1,6 +1,7 @@
 "use client";
 
 import Tape from "@/components/Tape";
+import { usePrefetchData } from "@/context/DataContext";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -16,6 +17,7 @@ const WiredLink = dynamic(
 
 export default function Home() {
   const router = useRouter();
+  usePrefetchData();
   return (
     <div>
       {/* Hero Section */}
@@ -43,7 +45,7 @@ export default function Home() {
                 articles, showcasing my expertise in web development and cyber
                 security.
               </p>
-              <p className="mb-8 leading-relaxed">
+              <p className="mb-8 leading-relaxed text-lg max-sm:text-sm">
                 Transforming ideas into solutions with innovation and security.
               </p>
               <Link href="/about">
@@ -76,7 +78,7 @@ export default function Home() {
               <div className="w-full max-w-xs h-64 bg-transparent rounded-lg flex items-center justify-center">
                 <img
                   src="/files.svg"
-                  alt="Profile"
+                  alt="Stack of Files"
                   className="h-full w-full object-contain rounded-lg"
                 />
               </div>
@@ -111,7 +113,7 @@ export default function Home() {
               <div className="w-full max-w-xs h-64 bg-transparent rounded-lg flex items-center justify-center">
                 <img
                   src="/chat.svg"
-                  alt="Chat"
+                  alt="Telephone"
                   className="h-full w-full object-contain rounded-lg"
                 />
               </div>
@@ -123,18 +125,13 @@ export default function Home() {
                   I love working with teams, agencies and individuals &nbsp;
                   <WiredLink
                     elevation={2}
+                    href="#contact"
                     className="text-2xl max-sm:text-xl text-secondary"
                     style={
                       {
                         "--wired-link-decoration-color": "#eab308",
                       } as React.CSSProperties
                     }
-                    onClick={(e: React.MouseEvent) => {
-                      e.preventDefault();
-                      document
-                        .getElementById("contact")
-                        ?.scrollIntoView({ behavior: "smooth" });
-                    }}
                   >
                     get in touch.
                   </WiredLink>

@@ -75,7 +75,7 @@ export default function AboutPage() {
                 <div className="absolute top-0 -right-3 -z-10 w-[102%] h-[103%] rounded-4xl bg-secondary dark:bg-primary" />
                 <Image
                   src={proPicDark}
-                  alt="developer image"
+                  alt="Formal image"
                   width={500}
                   height={500}
                   className="w-full h-auto rounded-2xl"
@@ -111,7 +111,7 @@ export default function AboutPage() {
               <div className="w-full aspect-square flex items-center justify-center">
                 <img
                   src="/coding.svg"
-                  alt="coding"
+                  alt="coder"
                   className="w-3/5 h-full object-contain hover:grayscale transition-all duration-500"
                 />
               </div>
