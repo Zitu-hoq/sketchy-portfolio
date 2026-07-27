@@ -30,7 +30,7 @@ function truncateWords(text: string | undefined, max: number): string {
 
 export default function WorkContent() {
   const { data, loading } = useData();
-  const projects = data.projects;
+  const projects = [...data.projects].reverse();
   const [filter, setFilter] = useState("All");
 
   const categories = ["All", ...new Set(projects.map((p) => p.type))];
