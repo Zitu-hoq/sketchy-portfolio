@@ -133,7 +133,7 @@ export default function WorkContent() {
                           {project.technologies.map((tech: string) => (
                             <span
                               key={tech}
-                              className="inline-block bg-btn-primary dark:bg-btn-primary text-xs font-medium px-2.5 py-0.5 rounded"
+                              className="inline-block bg-btn-primary dark:bg-btn-primary text-xs font-medium lowercase px-2.5 py-0.5 rounded"
                             >
                               {tech}
                             </span>
