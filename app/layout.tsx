@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { DataProvider } from "@/context/DataContext";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Comic_Neue } from "next/font/google";
 import Footer from "./footer-client";
@@ -38,7 +39,12 @@ export default function RootLayout({
             <Navbar />
             <main className="pt-24">{children}</main>
             <Footer />
-            {process.env.NODE_ENV === "production" && <Analytics />}
+            {process.env.NODE_ENV === "production" && (
+              <>
+                <Analytics />
+                <SpeedInsights />
+              </>
+            )}
           </DataProvider>
         </ThemeProvider>
       </body>
